@@ -1,0 +1,68 @@
+# ========================================
+# FRONTEND - Docker Ignore
+# ========================================
+# Archivos a excluir del contexto de Docker build
+# para optimizar tamaño y velocidad
+# ========================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README.md
+CHANGELOG.md
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Flutter Build Outputs
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Testing
+test/
+coverage/
+*_test.dart
+
+# Platform specific (no usados en web)
+android/
+ios/
+linux/
+macos/
+windows/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Runtime data
+*.log
+
+# Environment
+.env
+.env.local
+.env.development
+.env.beta
+.env.production
+
+# Analysis
+analysis_options.yaml
+analyze_translations.dart
+
+# Documentation
+docs/
+LOCALE-GOLDENRULES.md

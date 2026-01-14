@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "dart": {
+      "type": "stdio",
+      "command": "dart",
+      "args": [
+        "mcp-server"
+      ],
+      "env": {}
+    },
+    "mongodb": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mongodb-js/mongodb-mcp-server"
+      ],
+      "env": {
+        "MONGODB_URI": "mongodb://fitriders_app:FitRiders2025AppPass@localhost:27017/fitriders?authSource=fitriders"
+      }
+    }
+  }
+}

@@ -1,0 +1,2322 @@
+[
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real01"
+    },
+    "title": "SLS Sydney 2026",
+    "description": "Street League Skateboarding kicks off the 2026 World Championship Tour in Sydney. Day 1 features Knockout Rounds, Day 2 includes Finals and Best Trick Jam. Elite athletes including Rayssa Leal, Nyjah Huston, Yuto Horigome competing.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Street League Skateboarding",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "skateboard",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-02-14T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-02-15T20:00:00.000Z"
+      },
+      "venue": "Ken Rosewall Arena",
+      "city": "Sydney",
+      "country": "Australia",
+      "latitude": -33.8688,
+      "longitude": 151.2093,
+      "timeZone": "Australia/Sydney"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.streetleague.com/sydney",
+      "externalProvider": "Street League Skateboarding",
+      "maxParticipants": 80,
+      "minParticipants": 20,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-02-01T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 0.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Execution",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Difficulty",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "SLS format: Knockout rounds + Finals. Best 4 runs count. Top 8 advance to finals.",
+    "bannerUrl": "https://www.streetleague.com/images/sls-sydney-2026.jpg",
+    "imageUrls": [
+      "https://www.streetleague.com/images/sls-sydney-1.jpg"
+    ],
+    "tags": [
+      "skateboard",
+      "street",
+      "sls",
+      "world-championship",
+      "australia",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real02"
+    },
+    "title": "Tampa Pro 2026",
+    "description": "The 32nd Annual Tampa Pro, the longest-standing professional skateboard competition. Historic street contest at the legendary Skatepark of Tampa.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Skatepark of Tampa",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "skateboard",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-04-09T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-04-12T19:00:00.000Z"
+      },
+      "venue": "Skatepark of Tampa",
+      "city": "Tampa",
+      "country": "United States",
+      "latitude": 27.9506,
+      "longitude": -82.4572,
+      "timeZone": "America/New_York"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://skateparkoftampa.com/spot/tampapro.aspx",
+      "externalProvider": "Skatepark of Tampa",
+      "maxParticipants": 120,
+      "minParticipants": 40,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-03-31T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 50.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Trick Selection",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Difficulty",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Consistency",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 4,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": true,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "32nd annual edition. Qualifying rounds, semi-finals, and finals. Best runs count.",
+    "bannerUrl": "https://skateparkoftampa.com/spot/images/tampapro-banner.jpg",
+    "imageUrls": [
+      "https://skateparkoftampa.com/spot/images/tampapro-1.jpg"
+    ],
+    "tags": [
+      "skateboard",
+      "street",
+      "tampa-pro",
+      "usa",
+      "historic",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real03"
+    },
+    "title": "X Games Sacramento 2026",
+    "description": "X Games League Sacramento 2026 - First stop of the new XGL format. Skateboard and BMX competitions with team-based format. Elite athletes compete in street and park disciplines.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "X Games / ESPN",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-06-26T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-06-28T20:00:00.000Z"
+      },
+      "venue": "Downtown Sacramento",
+      "city": "Sacramento",
+      "country": "United States",
+      "latitude": 38.5816,
+      "longitude": -121.4944,
+      "timeZone": "America/Los_Angeles"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.xgames.com/events/sacramento-2026",
+      "externalProvider": "X Games",
+      "maxParticipants": 150,
+      "minParticipants": 50,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-06-01T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 0.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Trick Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Amplitude",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 3,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": true,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "New X Games League format with team scoring. Multiple disciplines including skateboard street, park, BMX street, and park.",
+    "bannerUrl": "https://www.xgames.com/images/sacramento-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.xgames.com/images/sacramento-2026-1.jpg"
+    ],
+    "tags": [
+      "x-games",
+      "skateboard",
+      "bmx",
+      "multi-discipline",
+      "usa",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real04"
+    },
+    "title": "X Games Japan 2026",
+    "description": "X Games League Japan 2026 - Second stop of the XGL world tour. Featuring skateboard and BMX competitions in both street and park disciplines.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "X Games / ESPN",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-07-04T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-07-05T20:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Tokyo",
+      "country": "Japan",
+      "latitude": 35.6762,
+      "longitude": 139.6503,
+      "timeZone": "Asia/Tokyo"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.xgames.com/events/japan-2026",
+      "externalProvider": "X Games",
+      "maxParticipants": 120,
+      "minParticipants": 40,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-06-20T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 0.0,
+      "currency": "JPY",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Trick Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Flow",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 6,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "X Games League format. Skateboard and BMX competitions across street and park disciplines.",
+    "bannerUrl": "https://www.xgames.com/images/japan-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.xgames.com/images/japan-2026-1.jpg"
+    ],
+    "tags": [
+      "x-games",
+      "skateboard",
+      "bmx",
+      "japan",
+      "asia",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real05"
+    },
+    "title": "UCI BMX Racing World Championships 2026",
+    "description": "The 2026 UCI BMX Racing World Championships in Brisbane. Elite/U23/Junior racing on July 17-19. Expected 3,000 riders from 50+ countries competing at the Sleeman Sports Complex.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "UCI / AusCycling",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "bmx",
+    "category": "Racing",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-07-17T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-07-19T18:00:00.000Z"
+      },
+      "venue": "Sleeman Sports Complex BMX Supercross Track",
+      "city": "Brisbane",
+      "country": "Australia",
+      "latitude": -27.4698,
+      "longitude": 153.0251,
+      "timeZone": "Australia/Brisbane"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://bmxworlds2026.com/",
+      "externalProvider": "UCI BMX",
+      "maxParticipants": 3000,
+      "minParticipants": 500,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-06-30T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 150.0,
+      "currency": "AUD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "position_based",
+      "minScore": 1,
+      "maxScore": 8,
+      "criteria": [
+        {
+          "name": "Finish Position",
+          "weight": 1.0,
+          "maxScore": 100
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 0,
+    "totalRounds": 3,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": true,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "bracket",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "UCI BMX Racing World Championship format. Qualifying motos, quarter-finals, semi-finals, finals. Age categories: Elite, U23, Junior.",
+    "bannerUrl": "https://bmxworlds2026.com/images/banner.jpg",
+    "imageUrls": [
+      "https://bmxworlds2026.com/images/brisbane-1.jpg"
+    ],
+    "tags": [
+      "bmx",
+      "racing",
+      "world-championship",
+      "uci",
+      "australia",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real06"
+    },
+    "title": "FISE Montpellier 2026",
+    "description": "The 29th edition of FISE Montpellier, the world's biggest urban sports festival. BMX Freestyle, Skateboard, Scooter competitions. Includes UCI BMX Freestyle World Cup round.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "FISE World Series",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-05-13T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-05-17T20:00:00.000Z"
+      },
+      "venue": "Banks of River Lez",
+      "city": "Montpellier",
+      "country": "France",
+      "latitude": 43.6108,
+      "longitude": 3.8767,
+      "timeZone": "Europe/Paris"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fise.fr/en/registration",
+      "externalProvider": "FISE",
+      "maxParticipants": 500,
+      "minParticipants": 100,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-05-01T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 80.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Variety",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "FISE format with qualifiers and finals across BMX Park, BMX Flatland, Skateboard Park, Skateboard Street, and Scooter. Best 2 runs count.",
+    "bannerUrl": "https://www.fise.fr/images/montpellier-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.fise.fr/images/montpellier-2026-1.jpg"
+    ],
+    "tags": [
+      "fise",
+      "bmx",
+      "skateboard",
+      "scooter",
+      "multi-discipline",
+      "france",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real07"
+    },
+    "title": "Dew Tour Des Moines 2026",
+    "description": "Dew Tour returns to Des Moines with an open street skateboard contest throughout downtown. Part of USA Skateboarding National Championships.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Dew Tour / USA Skateboarding",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "skateboard",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-17T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-09-19T19:00:00.000Z"
+      },
+      "venue": "Downtown Des Moines - Open Street Course",
+      "city": "Des Moines",
+      "country": "United States",
+      "latitude": 41.5868,
+      "longitude": -93.6250,
+      "timeZone": "America/Chicago"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.dewtour.com/register",
+      "externalProvider": "Dew Tour",
+      "maxParticipants": 200,
+      "minParticipants": 50,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-01T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 40.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Trick Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Style",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Line Flow",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 4,
+    "totalRounds": 1,
+    "currentRound": 0,
+    "hasQualifying": false,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "jam",
+    "defaultHeatSize": 20,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Open street format with city spots throughout downtown Des Moines. Jam format with multiple runs counted.",
+    "bannerUrl": "https://www.dewtour.com/images/desmoines-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.dewtour.com/images/desmoines-2026-1.jpg"
+    ],
+    "tags": [
+      "dew-tour",
+      "skateboard",
+      "street",
+      "usa",
+      "open-format",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real08"
+    },
+    "title": "USA Skateboarding National Championships 2026",
+    "description": "USA Skateboarding National Championships presented by Toyota. Open street and park competitions throughout downtown Des Moines with national ranking points.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "USA Skateboarding",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "skateboard",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-17T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-09-19T20:00:00.000Z"
+      },
+      "venue": "Downtown Des Moines",
+      "city": "Des Moines",
+      "country": "United States",
+      "latitude": 41.5868,
+      "longitude": -93.6250,
+      "timeZone": "America/Chicago"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://usaskateboarding.com/register",
+      "externalProvider": "USA Skateboarding",
+      "maxParticipants": 250,
+      "minParticipants": 60,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-05T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 50.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Technical Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Consistency",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": true,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 12,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "National championship format with qualifying rounds, semi-finals, and finals. Street and Park divisions. National ranking points awarded.",
+    "bannerUrl": "https://usaskateboarding.com/images/nationals-2026-banner.jpg",
+    "imageUrls": [
+      "https://usaskateboarding.com/images/nationals-2026-1.jpg"
+    ],
+    "tags": [
+      "usa-skateboarding",
+      "national-championship",
+      "street",
+      "park",
+      "usa",
+      "ranking-points"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real09"
+    },
+    "title": "Asian Games 2026 - Skateboarding",
+    "description": "Skateboarding competition at the 2026 Asian Games in Aichi/Nagoya, Japan. Park and Street disciplines with continental medals. Part of multi-sport games with 41 sports.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Asian Games / OCA",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "skateboard",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-19T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-04T18:00:00.000Z"
+      },
+      "venue": "TBA Aichi Prefecture",
+      "city": "Nagoya",
+      "country": "Japan",
+      "latitude": 35.1815,
+      "longitude": 136.9066,
+      "timeZone": "Asia/Tokyo"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.olympic.org/asian-games",
+      "externalProvider": "Asian Games",
+      "maxParticipants": 60,
+      "minParticipants": 20,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-08-31T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 0.0,
+      "currency": "JPY",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "closed"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Amplitude",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Continental multi-sport games format. Skateboard Park and Street competitions. Medal awards: Gold, Silver, Bronze.",
+    "bannerUrl": "https://www.asiangames2026.jp/en/images/skateboard-banner.jpg",
+    "imageUrls": [
+      "https://www.asiangames2026.jp/en/images/skateboard-1.jpg"
+    ],
+    "tags": [
+      "asian-games",
+      "skateboard",
+      "multi-sport",
+      "japan",
+      "continental",
+      "medals"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real10"
+    },
+    "title": "Asian Games 2026 - BMX Freestyle",
+    "description": "BMX Freestyle competition at the 2026 Asian Games in Aichi/Nagoya, Japan. Park discipline with continental medals.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Asian Games / OCA",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "bmx",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-19T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-04T18:00:00.000Z"
+      },
+      "venue": "TBA Aichi Prefecture",
+      "city": "Nagoya",
+      "country": "Japan",
+      "latitude": 35.1815,
+      "longitude": 136.9066,
+      "timeZone": "Asia/Tokyo"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.olympic.org/asian-games",
+      "externalProvider": "Asian Games",
+      "maxParticipants": 40,
+      "minParticipants": 15,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-08-31T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 0.0,
+      "currency": "JPY",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "closed"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Height",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 6,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Continental multi-sport games format. BMX Freestyle Park competition. Medal awards: Gold, Silver, Bronze.",
+    "bannerUrl": "https://www.asiangames2026.jp/en/images/bmx-banner.jpg",
+    "imageUrls": [
+      "https://www.asiangames2026.jp/en/images/bmx-1.jpg"
+    ],
+    "tags": [
+      "asian-games",
+      "bmx",
+      "freestyle",
+      "park",
+      "japan",
+      "continental",
+      "medals"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real11"
+    },
+    "title": "World Skate Games 2026 - Skateboarding",
+    "description": "World Skate Games 2026 in Asunción, Paraguay. Official World Championships for Skateboard Park and Street. Part of multi-sport roller games with 11 disciplines.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "World Skate",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "skateboard",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-10-02T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-18T20:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Asunción",
+      "country": "Paraguay",
+      "latitude": -25.2637,
+      "longitude": -57.5759,
+      "timeZone": "America/Asuncion"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.worldskate.org/events/",
+      "externalProvider": "World Skate",
+      "maxParticipants": 200,
+      "minParticipants": 50,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-15T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 100.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Variety",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 3,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": true,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "World Championship format with Park and Street divisions. 10,000+ athletes expected from 100+ countries. Qualifiers, semi-finals, and finals.",
+    "bannerUrl": "https://www.worldskate.org/images/wsg-2026-skateboard-banner.jpg",
+    "imageUrls": [
+      "https://www.worldskate.org/images/wsg-2026-skateboard-1.jpg"
+    ],
+    "tags": [
+      "world-skate-games",
+      "skateboard",
+      "world-championship",
+      "paraguay",
+      "international",
+      "park",
+      "street"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real12"
+    },
+    "title": "World Skate Games 2026 - Scooter Freestyle",
+    "description": "World Skate Games 2026 - Official Scooter Freestyle World Championships in Asunción, Paraguay. Park and Street disciplines.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "World Skate",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "scooter",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-10-02T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-18T20:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Asunción",
+      "country": "Paraguay",
+      "latitude": -25.2637,
+      "longitude": -57.5759,
+      "timeZone": "America/Asuncion"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.worldskate.org/events/",
+      "externalProvider": "World Skate",
+      "maxParticipants": 150,
+      "minParticipants": 30,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-15T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 100.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Flow",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Official World Championship format for scooter freestyle. Park and Street disciplines. Qualifiers and finals.",
+    "bannerUrl": "https://www.worldskate.org/images/wsg-2026-scooter-banner.jpg",
+    "imageUrls": [
+      "https://www.worldskate.org/images/wsg-2026-scooter-1.jpg"
+    ],
+    "tags": [
+      "world-skate-games",
+      "scooter",
+      "freestyle",
+      "world-championship",
+      "paraguay",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real13"
+    },
+    "title": "FISE Macau 2026",
+    "description": "FISE World Series Macau 2026. BMX Freestyle, Skateboard, Scooter, and Roller Freestyle competitions in Macau.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "FISE World Series",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-03-14T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-03-15T19:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Macau",
+      "country": "China",
+      "latitude": 22.1987,
+      "longitude": 113.5439,
+      "timeZone": "Asia/Macau"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fise.fr/en/registration",
+      "externalProvider": "FISE",
+      "maxParticipants": 200,
+      "minParticipants": 50,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-03-01T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 60.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "FISE World Series format. BMX, Skateboard, Scooter, and Roller competitions. Best 2 runs count.",
+    "bannerUrl": "https://www.fise.fr/images/macau-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.fise.fr/images/macau-2026-1.jpg"
+    ],
+    "tags": [
+      "fise",
+      "world-series",
+      "bmx",
+      "skateboard",
+      "scooter",
+      "macau",
+      "china",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real14"
+    },
+    "title": "FISE Birmingham USA 2026",
+    "description": "FISE World Series returns to Birmingham, Alabama. BMX Freestyle Park/Flatland, Skateboard, Scooter, and Roller Freestyle. Includes UCI BMX Freestyle World Cup round.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "FISE World Series",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-08-07T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-08-09T19:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Birmingham",
+      "country": "United States",
+      "latitude": 33.5186,
+      "longitude": -86.8104,
+      "timeZone": "America/Chicago"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fise.fr/en/registration",
+      "externalProvider": "FISE",
+      "maxParticipants": 250,
+      "minParticipants": 60,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-07-25T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 70.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Variety",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "FISE format with UCI BMX Freestyle World Cup round. Multiple disciplines: BMX Park, BMX Flatland, Skateboard, Scooter, Roller. Best 2 runs count.",
+    "bannerUrl": "https://www.fise.fr/images/birmingham-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.fise.fr/images/birmingham-2026-1.jpg"
+    ],
+    "tags": [
+      "fise",
+      "world-series",
+      "uci-world-cup",
+      "bmx",
+      "skateboard",
+      "scooter",
+      "usa",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real15"
+    },
+    "title": "FISE Shanghai 2026",
+    "description": "FISE World Series Shanghai 2026. BMX Freestyle, Skateboard, Scooter, and Roller Freestyle. Includes UCI BMX Freestyle World Cup round.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "FISE World Series",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-10-15T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-18T19:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Shanghai",
+      "country": "China",
+      "latitude": 31.2304,
+      "longitude": 121.4737,
+      "timeZone": "Asia/Shanghai"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fise.fr/en/registration",
+      "externalProvider": "FISE",
+      "maxParticipants": 300,
+      "minParticipants": 70,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-10-01T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 60.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Amplitude",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "FISE format with UCI BMX Freestyle World Cup round. Multiple disciplines. Best 2 runs count.",
+    "bannerUrl": "https://www.fise.fr/images/shanghai-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.fise.fr/images/shanghai-2026-1.jpg"
+    ],
+    "tags": [
+      "fise",
+      "world-series",
+      "uci-world-cup",
+      "bmx",
+      "skateboard",
+      "scooter",
+      "china",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real16"
+    },
+    "title": "UCI BMX Freestyle World Cup 2026 - Round 4",
+    "description": "Final round of the 2026 UCI BMX Freestyle World Cup. Park and Flatland disciplines. World Cup points determine annual champions.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "UCI / Union Cycliste Internationale",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "bmx",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-11-27T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-11-29T18:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "TBA",
+      "country": "TBA",
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "timeZone": "UTC"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.uci.org/bmx-freestyle/events",
+      "externalProvider": "UCI",
+      "maxParticipants": 80,
+      "minParticipants": 20,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-11-15T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 0.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Originality",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "UCI BMX Freestyle World Cup final round. Park and Flatland competitions. World Cup points awarded.",
+    "bannerUrl": "https://www.uci.org/images/bmx-worldcup-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.uci.org/images/bmx-worldcup-2026-1.jpg"
+    ],
+    "tags": [
+      "uci",
+      "bmx",
+      "freestyle",
+      "world-cup",
+      "park",
+      "flatland",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real17"
+    },
+    "title": "World Skate Games 2026 - Roller Freestyle",
+    "description": "World Skate Games 2026 - Roller Freestyle Park World Championships in Asunción, Paraguay. Includes quad and inline freestyle disciplines.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "World Skate",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-10-02T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-18T20:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Asunción",
+      "country": "Paraguay",
+      "latitude": -25.2637,
+      "longitude": -57.5759,
+      "timeZone": "America/Asuncion"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.worldskate.org/events/",
+      "externalProvider": "World Skate",
+      "maxParticipants": 100,
+      "minParticipants": 25,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-15T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 100.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Creativity",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Official Roller Freestyle World Championship. Park discipline. Qualifiers and finals.",
+    "bannerUrl": "https://www.worldskate.org/images/wsg-2026-roller-banner.jpg",
+    "imageUrls": [
+      "https://www.worldskate.org/images/wsg-2026-roller-1.jpg"
+    ],
+    "tags": [
+      "world-skate-games",
+      "roller-freestyle",
+      "inline",
+      "quad",
+      "world-championship",
+      "paraguay",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real18"
+    },
+    "title": "World Skate Games 2026 - Artistic Roller Skating",
+    "description": "World Skate Games 2026 - Artistic Roller Skating World Championships. Figures, Dance, Freestyle, and Show disciplines.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "World Skate",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Artistic",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-10-02T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-18T20:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Asunción",
+      "country": "Paraguay",
+      "latitude": -25.2637,
+      "longitude": -57.5759,
+      "timeZone": "America/Asuncion"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.worldskate.org/events/",
+      "externalProvider": "World Skate",
+      "maxParticipants": 150,
+      "minParticipants": 40,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-15T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 100.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Technical Elements",
+          "weight": 0.5,
+          "maxScore": 50
+        },
+        {
+          "name": "Artistry",
+          "weight": 0.3,
+          "maxScore": 30
+        },
+        {
+          "name": "Performance",
+          "weight": 0.2,
+          "maxScore": 20
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 7,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 12,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "World Championship format for artistic roller skating. Multiple disciplines: Figures, Dance, Freestyle, Show.",
+    "bannerUrl": "https://www.worldskate.org/images/wsg-2026-artistic-banner.jpg",
+    "imageUrls": [
+      "https://www.worldskate.org/images/wsg-2026-artistic-1.jpg"
+    ],
+    "tags": [
+      "world-skate-games",
+      "artistic",
+      "roller-skating",
+      "figures",
+      "dance",
+      "freestyle",
+      "world-championship",
+      "paraguay"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real19"
+    },
+    "title": "FISE Libreville 2026",
+    "description": "FISE World Series Libreville, Gabon 2026. BMX Freestyle, Skateboard, Scooter competitions in Africa.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "FISE World Series",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-07-03T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-07-05T19:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Libreville",
+      "country": "Gabon",
+      "latitude": 0.4162,
+      "longitude": 9.4673,
+      "timeZone": "Africa/Libreville"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fise.fr/en/registration",
+      "externalProvider": "FISE",
+      "maxParticipants": 150,
+      "minParticipants": 40,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-06-20T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 50.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "FISE World Series format. BMX, Skateboard, and Scooter competitions. Best 2 runs count.",
+    "bannerUrl": "https://www.fise.fr/images/libreville-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.fise.fr/images/libreville-2026-1.jpg"
+    ],
+    "tags": [
+      "fise",
+      "world-series",
+      "bmx",
+      "skateboard",
+      "scooter",
+      "gabon",
+      "africa",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real20"
+    },
+    "title": "FISE Paris 2026",
+    "description": "FISE Paris 2026, final stop of the FISE World Series. BMX Freestyle, Skateboard, Scooter, and Roller competitions in France's capital.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "FISE World Series",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-12-18T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-12-19T19:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "Paris",
+      "country": "France",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "timeZone": "Europe/Paris"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fise.fr/en/registration",
+      "externalProvider": "FISE",
+      "maxParticipants": 200,
+      "minParticipants": 50,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-12-05T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 80.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Amplitude",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "FISE World Series finale in Paris. BMX, Skateboard, Scooter, and Roller competitions. Best 2 runs count.",
+    "bannerUrl": "https://www.fise.fr/images/paris-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.fise.fr/images/paris-2026-1.jpg"
+    ],
+    "tags": [
+      "fise",
+      "world-series",
+      "finale",
+      "bmx",
+      "skateboard",
+      "scooter",
+      "paris",
+      "france",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real21"
+    },
+    "title": "Extreme Barcelona 2026",
+    "description": "The largest urban sports event in Spain. 16th edition featuring Skateboard, BMX, Scooter, and Roller Freestyle competitions at Parc del Forum. Includes Olympic qualifiers for various disciplines.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "SevenMila / Extreme Barcelona",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "multi",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-11T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-09-13T21:00:00.000Z"
+      },
+      "venue": "Parc del Forum",
+      "city": "Barcelona",
+      "country": "Spain",
+      "latitude": 41.4097,
+      "longitude": 2.2215,
+      "timeZone": "Europe/Madrid"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.extremebarcelona.com/registration",
+      "externalProvider": "Extreme Barcelona",
+      "maxParticipants": 300,
+      "minParticipants": 100,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-01T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 50.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Execution",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 3,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": true,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 12,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Olympic format with qualifying heats, semi-finals, and finals. Best runs count for the final score.",
+    "bannerUrl": "https://www.extremebarcelona.com/images/banner-2026.jpg",
+    "imageUrls": [
+      "https://www.extremebarcelona.com/images/extra-1.jpg"
+    ],
+    "tags": [
+      "extreme-barcelona",
+      "spain",
+      "barcelona",
+      "skateboard",
+      "bmx",
+      "scooter",
+      "roller",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000a1234567890real22"
+    },
+    "title": "Tony Hawk's Vert Alert 2026",
+    "description": "Premier vert skateboarding competition organized by Tony Hawk. Top vert skaters in the world competing for the championship and legends appearing in exhibition heats.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Tony Hawk / Vert Alert",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "skateboard",
+    "category": "Vert",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-06-12T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-06-13T20:00:00.000Z"
+      },
+      "venue": "Jon M. Huntsman Center",
+      "city": "Salt Lake City",
+      "country": "United States",
+      "latitude": 40.7608,
+      "longitude": -111.8910,
+      "timeZone": "America/Denver"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://thvertalert.com/register",
+      "externalProvider": "Vert Alert",
+      "maxParticipants": 40,
+      "minParticipants": 15,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-06-01T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 0.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Amplitude",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Technicality",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 6,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Vert format: 45-second runs. Best run counts. Special best trick session in the finals.",
+    "bannerUrl": "https://thvertalert.com/images/banner.jpg",
+    "imageUrls": [
+      "https://thvertalert.com/images/vert-1.jpg"
+    ],
+    "tags": [
+      "vert-alert",
+      "tony-hawk",
+      "skateboard",
+      "vert",
+      "usa",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  }
+]

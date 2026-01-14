@@ -1,0 +1,225 @@
+version: '3.9'
+
+# ========================================
+# STREETCORE BETA - Docker Compose
+# ========================================
+# Entorno BETA para despliegue con Cloudflare
+# Versión: 0.2
+# Última actualización: 2026-01-11
+# ========================================
+
+services:
+  # ========================================
+  # MONGODB - Base de datos
+  # ========================================
+  mongodb:
+    image: mongo:7.0
+    container_name: streetcore-mongodb-beta
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-admin123}
+      MONGO_INITDB_DATABASE: ${DB_NAME:-streetcore}
+    ports:
+      - "27017:27017"
+    volumes:
+      # Datos persistentes
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+      # Scripts de inicialización (se ejecutan al crear el contenedor)
+      - ./scripts/docker-init:/docker-entrypoint-initdb.d:ro
+      # Backups
+      - ./backups/mongodb:/backups
+    networks:
+      - streetcore-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  # ========================================
+  # BACKEND - Go/Gin API
+  # ========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        GO_VERSION: 1.25.5
+    container_name: streetcore-backend-beta
+    restart: unless-stopped
+    environment:
+      # Environment
+      ENV: ${ENV:-staging}
+      VERSION: ${VERSION:-0.2}
+      API_VERSION: ${API_VERSION:-v2}
+      PORT: 3000
+      BASE_URL: ${BASE_URL:-https://api-beta.streetcore.com}
+
+      # MongoDB
+      MONGO_URI: mongodb://${MONGO_ROOT_USER:-admin}:${MONGO_ROOT_PASSWORD:-admin123}@mongodb:27017/${DB_NAME:-streetcore}?authSource=admin
+      DB_NAME: ${DB_NAME:-streetcore}
+      DB_APP_USER: ${DB_APP_USER:-streetcore_app}
+      DB_APP_PASS: ${DB_APP_PASS:-streetcore_pass}
+
+      # JWT
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXP_HOURS: ${JWT_EXP_HOURS:-1}
+      REFRESH_TOKEN_EXP_DAYS: ${REFRESH_TOKEN_EXP_DAYS:-7}
+
+      # OAuth
+      OAUTH_ENCRYPTION_KEY: ${OAUTH_ENCRYPTION_KEY}
+      OAUTH_STATE_EXPIRY: ${OAUTH_STATE_EXPIRY:-10}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI:-}
+      FACEBOOK_APP_ID: ${FACEBOOK_APP_ID:-}
+      FACEBOOK_APP_SECRET: ${FACEBOOK_APP_SECRET:-}
+      FACEBOOK_REDIRECT_URI: ${FACEBOOK_REDIRECT_URI:-}
+      OAUTH_ALLOWED_REDIRECTS: ${OAUTH_ALLOWED_REDIRECTS:-https://beta.streetcore.com/auth/callback}
+
+      # CORS - Configurado para Cloudflare
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-https://beta.streetcore.com,https://www.beta.streetcore.com}
+
+      # Security Headers - Optimizado para Cloudflare CDN
+      ENABLE_HSTS: true
+      HSTS_MAX_AGE: 31536000
+      HSTS_INCLUDE_SUBDOMAINS: true
+      HSTS_PRELOAD: true
+      CSP_DEFAULT_SRC: "'self'"
+      CSP_CONNECT_SRC: "'self' https://beta.streetcore.com https://*.cloudflare.com"
+      CSP_IMG_SRC: "'self' data: https: blob:"
+      CSP_STYLE_SRC: "'self' 'unsafe-inline' https://fonts.googleapis.com"
+      CSP_SCRIPT_SRC: "'self' 'unsafe-inline' https://challenges.cloudflare.com"
+      X_FRAME_OPTIONS: SAMEORIGIN
+      REFERRER_POLICY: strict-origin-when-cross-origin
+
+      # Logging
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_FORMAT: json
+      LOG_TO_FILE: true
+      LOG_FILE_DIR: /app/logs
+      LOG_MAX_FILE_SIZE_MB: 50
+      LOG_MAX_AGE_DAYS: 30
+      LOG_TO_MONGO: true
+      LOG_MONGO_TTL_DAYS: 30
+
+      # Admin User
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@fitriders.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_ROLE: admin
+      ADMIN_NICKNAME: Administrator
+
+      # Testing Mode
+      TESTING_MODE: true
+
+      # Rate Limiting
+      RATE_LIMIT_ENABLED: true
+      RATE_LIMIT_GENERAL_RATE: 2000
+      RATE_LIMIT_GENERAL_WINDOW_MINUTES: 60
+      RATE_LIMIT_AUTH_RATE: 20
+      RATE_LIMIT_AUTH_WINDOW_MINUTES: 1
+
+      # Media Storage
+      MEDIA_STORAGE_TYPE: ${MEDIA_STORAGE_TYPE:-filesystem}
+      MEDIA_UPLOAD_DIR: /app/uploads
+      MEDIA_CDN_ENABLED: ${MEDIA_CDN_ENABLED:-false}
+      MEDIA_CDN_DOMAIN: ${MEDIA_CDN_DOMAIN:-}
+
+      # S3 Storage (opcional)
+      MEDIA_S3_BUCKET: ${MEDIA_S3_BUCKET:-}
+      MEDIA_S3_REGION: ${MEDIA_S3_REGION:-}
+      MEDIA_S3_ACCESS_KEY: ${MEDIA_S3_ACCESS_KEY:-}
+      MEDIA_S3_SECRET_KEY: ${MEDIA_S3_SECRET_KEY:-}
+      MEDIA_S3_ENDPOINT: ${MEDIA_S3_ENDPOINT:-}
+
+    ports:
+      - "3000:3000"
+    volumes:
+      # Uploads persistentes
+      - backend_uploads:/app/uploads
+      # Logs persistentes
+      - backend_logs:/app/logs
+      # Backups
+      - ./backups/uploads:/backups
+    networks:
+      - streetcore-network
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ========================================
+  # FRONTEND - Flutter Web
+  # ========================================
+  frontend:
+    build:
+      context: ./street_core
+      dockerfile: Dockerfile
+      args:
+        FLUTTER_VERSION: 3.9.2
+    container_name: streetcore-frontend-beta
+    restart: unless-stopped
+    environment:
+      # API Configuration
+      API_URL: ${API_URL:-https://api-beta.streetcore.com}
+      API_VERSION: ${API_VERSION:-v2}
+
+      # Environment
+      ENVIRONMENT: ${ENV:-staging}
+
+      # Cloudflare Pages Headers (inyectados en build)
+      CF_PAGES: "1"
+      CF_PAGES_BRANCH: beta
+      CF_PAGES_COMMIT_SHA: ${COMMIT_SHA:-latest}
+
+    ports:
+      - "80:80"
+    networks:
+      - streetcore-network
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+# ========================================
+# NETWORKS
+# ========================================
+networks:
+  streetcore-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# ========================================
+# VOLUMES - Persistencia de datos
+# ========================================
+volumes:
+  # MongoDB
+  mongodb_data:
+    driver: local
+    name: streetcore-mongodb-data-beta
+  mongodb_config:
+    driver: local
+    name: streetcore-mongodb-config-beta
+
+  # Backend
+  backend_uploads:
+    driver: local
+    name: streetcore-backend-uploads-beta
+  backend_logs:
+    driver: local
+    name: streetcore-backend-logs-beta

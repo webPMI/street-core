@@ -1,0 +1,194 @@
+# ============================================
+# StreetCore - Git Ignore Configuration
+# ============================================
+# CRITICAL: Protects secrets and sensitive data
+
+# ==========================================
+# SECRETS & ENVIRONMENT VARIABLES (CRITICAL)
+# ==========================================
+.env
+.env.*
+!.env.example
+
+# Local environment overrides
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==========================================
+# DATABASES & DATA
+# ==========================================
+# MongoDB data directories
+/data/
+/mongo-data/
+*.db
+*.sqlite
+
+# Database dumps
+*.dump
+*.sql
+*.bak
+
+# ==========================================
+# LOGS & TEMPORARY FILES
+# ==========================================
+# Application logs
+/backend/logs/
+/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ==========================================
+# UPLOADS & MEDIA
+# ==========================================
+/backend/uploads/
+/uploads/
+/public/uploads/
+/media/
+
+# ==========================================
+# DEPENDENCIES
+# ==========================================
+# Go
+/backend/vendor/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnp
+.pnp.js
+
+# Dart/Flutter
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+
+# ==========================================
+# BUILD OUTPUTS
+# ==========================================
+# Go binaries
+/backend/bin/
+/backend/tmp/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Flutter
+/street_core/build/
+/street_core/.flutter-plugins
+/street_core/.flutter-plugins-dependencies
+
+# ==========================================
+# IDE & EDITORS
+# ==========================================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs (GoLand, IntelliJ, WebStorm)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ==========================================
+# OPERATING SYSTEM
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ==========================================
+# DOCKER & CONTAINERS
+# ==========================================
+# Docker volumes
+/docker-volumes/
+
+# ==========================================
+# TESTING & COVERAGE
+# ==========================================
+# Test coverage reports
+coverage/
+*.coverprofile
+*.out
+
+# Test databases
+test.db
+
+# ==========================================
+# CERTIFICATES & KEYS
+# ==========================================
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# SSH keys
+id_rsa
+id_rsa.pub
+*.ppk
+
+# ==========================================
+# CLOUD & DEPLOYMENT
+# ==========================================
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Kubernetes secrets
+*-secret.yaml
+
+# ==========================================
+# BACKUP FILES
+# ==========================================
+*.backup
+*.bak
+*.old
+
+# ==========================================
+# CUSTOM RULES
+# ==========================================
+# Add project-specific ignores below

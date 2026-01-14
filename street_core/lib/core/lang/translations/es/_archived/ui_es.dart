@@ -1,0 +1,26 @@
+/// Traducciones relacionadas con la interfaz de usuario para español
+/// Solo incluye claves que no existen en es.dart principal para evitar duplicados
+const Map<String, String> uiEs = {
+  'page.not.found': 'Página no encontrada',
+  'back.to.home': 'Volver a la página principal',
+  'page.not.found.message': 'Esta página no existe o ha sido eliminada.',
+  'theme': 'Tema',
+  'end.date': 'Fecha de finalización',
+  'status': 'Estado',
+  'start.date': 'Fecha comienzo',
+  'joined.date': 'Fecha introducida',
+  'select.mode': 'Seleccionar modo',
+  'toggle.statistics': 'Estadisticas',
+  'view.list': 'Vista en lista',
+  'view.grid': 'Vista cuadrícula',
+  'hide.filters': 'Ocultar filtros',
+  'show.filters': 'Mostrar filtros',
+  'unknown.state': 'Estado desconocido',
+  'edited': 'editado',
+  'initializing': 'Inicializando...',
+  'checking.authentication': 'Verificando autenticación...',
+  'error.initialization.failed': 'Fallo en la inicialización',
+  'authenticated': 'Autenticado',
+  'unauthenticated': 'No autenticado',
+  'tap.to.retry': 'Toca para reintentar',
+};

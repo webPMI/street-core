@@ -1,0 +1,199 @@
+# Profile Feature - Backend Rules
+
+## Architecture Principles
+
+### Monolith by Features - Flat Structure
+- Profile uses FLAT architecture (not hexagonal)
+- Structure: model.go, dto.go, repository.go, service.go, handler.go, routes.go
+- Keep all profile-related code in `backend/features/profile/`
+
+### Feature Separation
+- **Profile handles**: Posts CRUD, user profiles, post statistics
+- **Social handles**: Likes, comments, saves, shares
+- Profile can USE social services, but should not duplicate them
+- Use interfaces to avoid circular dependencies
+
+## Code Organization
+
+### Post Management
+- Posts belong to Profile feature (post_model.go, post_service.go, post_handler.go)
+- Social feature only handles interactions (likes, comments, saves)
+- Post counter updates (likesCount, commentsCount) are called from Social via interfaces
+
+### Repository Pattern
+- Use generic repository: `repository.IRepository[T]`
+- Profile has PostRepository for post CRUD
+- Do NOT duplicate User repository - use shared one from pkg/repository
+- Keep repositories focused on data access only
+
+### Service Layer
+- Business logic in service layer (post_service.go)
+- Services can call other feature services via interfaces
+- Example: PostService can call Social's LikeService
+- Avoid tight coupling between features
+
+### Handler Layer
+- HTTP handlers in handler files (post_handler.go)
+- Handlers orchestrate: validate input → call service → format response
+- Use `response.Success()` and `response.Error()` helpers
+- Always check user ownership before update/delete operations
+
+## Data Models
+
+### Post Model
+```go
+// User interaction fields MUST NOT have omitempty
+IsLikedByCurrentUser bool `bson:"-" json:"isLikedByCurrentUser"`
+IsSavedByCurrentUser bool `bson:"-" json:"isSavedByCurrentUser"`
+
+// Always initialize interaction fields in handlers
+post.IsLikedByCurrentUser = false
+post.IsSavedByCurrentUser = false
+```
+
+### DTOs
+- Keep request/response DTOs in dto.go
+- Use pointer fields for optional updates: `Caption *string`
+- Validate using struct tags: `binding:"required,max=2200"`
+
+## API Design
+
+### Pagination
+- ALWAYS use pagination for list endpoints
+- Use `pagination.ParseParams(c)` for query params
+- Return: `pagination.CreateResponse(page, limit, total, items)`
+- Structure: `{data: {data: [...], pagination: {...}}}`
+
+### Response Format
+- Success: `response.Success(c, status, message, data)`
+- Error: `response.Error(c, status, errorCode)`
+- Error codes must match translations in `docs/modules/profile/TRANSLATIONS.md`
+
+### Filters
+- Parse filters in handler: `parsePostFilters(c)`
+- Support: search, media_type, tag, user_id, archived, visibility
+- Apply filters in repository query
+
+## Interaction with Social Feature
+
+### Using Social Services
+```go
+// In handler struct
+type PostHandler struct {
+    PostService    IPostService
+    UserService    UserService
+    LikeService    social.ILikeService  // Import social services
+}
+
+// Populate interaction fields
+if userID, exists := c.Get("userID"); exists {
+    like, _ := h.LikeService.GetLike(postID, userID.(string))
+    post.IsLikedByCurrentUser = (like != nil)
+}
+```
+
+### Counter Updates from Social
+```go
+// PostService must implement methods for Social to call
+func (s *postService) IncrementLikes(postID string) error
+func (s *postService) DecrementLikes(postID string) error
+func (s *postService) IncrementComments(postID string) error
+func (s *postService) DecrementComments(postID string) error
+```
+
+### Interface Design
+- Keep minimal interface in profile_interfaces.go
+- Social-specific methods can be on concrete type
+- Use type assertions in routes.go when needed:
+```go
+type socialPostService interface {
+    profile.IPostService
+    IncrementComments(postID string) error
+    // ... other social methods
+}
+postService, ok := postServiceBase.(socialPostService)
+```
+
+## Common Pitfalls
+
+### ❌ DON'T
+- Duplicate like/comment logic from social feature
+- Use `omitempty` on boolean interaction fields
+- Return posts without populating IsLikedByCurrentUser
+- Create repositories for entities managed by other features
+- Log sensitive user data
+
+### ✅ DO
+- Use social services via dependency injection
+- Always initialize interaction fields (even if false)
+- Use batch queries for like checks: `GetUserLikesForPosts()`
+- Verify ownership before delete/update
+- Use context.Context for all DB operations
+
+## Logging
+
+### Production Logging
+```go
+log.Printf("🔍 [Controller] Getting posts for user: %s", userID)
+log.Printf("✅ [Controller] Post created successfully")
+log.Printf("🛑 [Service Error] Error creating post: %v", err)
+```
+
+### Development Debugging
+- Use log.Printf for permanent logs
+- Remove temporary debug logs before commit
+- Never log passwords, tokens, or sensitive data
+
+## Performance
+
+### Database Queries
+- Use indexes on: userId, createdAt, isDeleted, visibility
+- Batch operations when possible (GetUserLikesForPosts)
+- Use projection to exclude heavy fields when not needed
+
+### Caching (Future)
+- Plan for Redis caching of post counts
+- Cache user engagement data
+- Invalidate on post/like/comment changes
+
+## Testing
+
+### Unit Tests
+- Test service layer logic independently
+- Mock repository and external services
+- Cover edge cases: empty results, invalid IDs, unauthorized access
+
+### Integration Tests
+- Test full request/response cycle
+- Verify pagination works correctly
+- Test interaction field population
+
+## Security
+
+### Authorization
+- Always verify user ownership for update/delete
+- Check user authentication for interaction fields
+- Validate ObjectIDs before database queries
+
+### Input Validation
+- Sanitize HTML in captions: `middlewares.SanitizeHTML()`
+- Validate file URLs before storage
+- Limit caption length (2200 chars max)
+- Validate media_type enum values
+
+## Migration Notes
+
+### Repository Consolidation (TODO)
+- UserRepository exists in both profile and pkg/repository
+- Should consolidate to use shared repository only
+- Update profile_routes.go to use pkg/repository.UserRepository
+
+### Dead Code (TODO - 52 instances)
+- Review and remove temporary debug logs
+- Clean up commented code
+- Remove unused imports
+
+## Related Documentation
+- Architecture: `/docs/architecture/adr/ADR-005-hybrid-architecture.md`
+- Translations: `/docs/modules/profile/TRANSLATIONS.md`
+- API Specs: `/docs/modules/profile/API.md`

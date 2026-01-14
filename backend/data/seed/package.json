@@ -1,0 +1,33 @@
+{
+  "name": "streetcore-seed-data",
+  "version": "1.0.0",
+  "description": "Datos de ejemplo realistas para StreetCore - Plataforma de deportes urbanos",
+  "main": "import.js",
+  "scripts": {
+    "import": "node import.js",
+    "validate": "node validate.js",
+    "test": "npm run import && npm run validate",
+    "import:users": "mongoimport --db fitriders --collection users --file 01_users.json --jsonArray --drop",
+    "import:skateparks": "mongoimport --db fitriders --collection skateparks --file 02_skateparks.json --jsonArray --drop",
+    "import:clubs": "mongoimport --db fitriders --collection clubs --file 03_clubs.json --jsonArray --drop",
+    "import:competitions": "mongoimport --db fitriders --collection competitions --file 04_competitions.json --jsonArray --drop",
+    "import:all": "npm run import:users && npm run import:skateparks && npm run import:clubs && npm run import:competitions"
+  },
+  "keywords": [
+    "streetcore",
+    "seed",
+    "mongodb",
+    "skateboard",
+    "bmx",
+    "inline",
+    "scooter"
+  ],
+  "author": "StreetCore Team",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

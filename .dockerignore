@@ -1,0 +1,37 @@
+# ========================================
+# ROOT - Docker Ignore
+# ========================================
+
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+docs/
+
+# Scripts
+scripts/
+*.sh
+*.ps1
+Makefile
+
+# Environment files
+.env*
+
+# Backups
+backups/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose*.yml
+Dockerfile
+.dockerignore

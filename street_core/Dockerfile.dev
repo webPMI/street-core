@@ -1,0 +1,23 @@
+# ========================================
+# STREETCORE FRONTEND - Development
+# ========================================
+# Dockerfile para desarrollo con hot reload
+# ========================================
+
+FROM ghcr.io/cirruslabs/flutter:stable
+
+# Configurar directorio de trabajo
+WORKDIR /app
+
+# Copiar pubspec para cachear dependencias
+COPY pubspec.yaml pubspec.lock ./
+RUN flutter pub get
+
+# Copiar código fuente (será montado como volumen)
+COPY . .
+
+# Exponer puerto
+EXPOSE 80
+
+# Comando por defecto (puede ser sobreescrito)
+CMD ["flutter", "run", "-d", "web-server", "--web-hostname", "0.0.0.0", "--web-port", "80", "--hot"]

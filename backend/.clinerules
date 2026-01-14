@@ -1,0 +1,271 @@
+# Street Core Backend - Development Rules
+# ========================================
+# This file defines rules and guidelines for AI assistants and developers
+# working on this codebase.
+
+## Project Overview
+
+This is a Go REST API backend for a social fitness platform (FitRiders).
+Built with Gin framework, MongoDB, and clean architecture principles.
+
+## Code Style & Conventions
+
+### Go Standards
+- Follow official Go code review comments: https://github.com/golang/go/wiki/CodeReviewComments
+- Use `gofmt` for formatting (enforced)
+- Maximum line length: 120 characters
+- Use meaningful variable names (no single letters except loop indices)
+
+### Naming Conventions
+- Packages: lowercase, single word (e.g., `auth`, `profile`, `handlers`)
+- Files: snake_case (e.g., `user_handler.go`, `auth_service.go`)
+- Exported functions/types: PascalCase (e.g., `GetUserByID`, `AuthService`)
+- Unexported functions/types: camelCase (e.g., `generateToken`, `validateInput`)
+- Constants: PascalCase for exported, camelCase for unexported
+- Interfaces: End with -er when single method (e.g., `Reader`, `Validator`)
+
+### Error Handling
+- Always handle errors explicitly
+- Use custom error types from `pkg/errors`
+- Never log and return the same error
+- Wrap errors with context using `fmt.Errorf("context: %w", err)`
+
+### Logging
+- Use structured logging via `utils.Info`, `utils.Error`, etc.
+- Never log sensitive data (passwords, tokens, PII)
+- Use `utils.HashEmailForLogging()` for email addresses
+- Include relevant context (user_id, ip, request_id)
+
+## Architecture Patterns
+
+### Directory Structure
+```
+features/       -> Feature modules (auth, profile)
+handlers/       -> HTTP handlers
+middlewares/    -> HTTP middlewares
+models/         -> Data models
+pkg/            -> Shared packages
+services/       -> Business logic
+tests/          -> Centralized tests
+```
+
+### Dependency Injection
+- All dependencies are wired in `app/container.go`
+- Use interfaces for testability
+- Never import concrete implementations in handlers
+
+### Repository Pattern
+- Use generic `IRepository[T]` interface
+- Located in `pkg/repository/`
+- Supports CRUD, queries, soft deletes, bulk operations
+
+### Request/Response Flow
+```
+Request -> Middleware -> Handler -> Service -> Repository -> MongoDB
+Response <- Middleware <- Handler <- Service <- Repository <-
+```
+
+## Security Requirements
+
+### CRITICAL - Never Do
+- Never expose tokens in production responses
+- Never log passwords or tokens
+- Never use `context.Background()` in HTTP handlers (use `c.Request.Context()`)
+- Never skip input validation
+- Never trust client input
+- Never commit secrets or `.env` files
+
+### MUST Do
+- Validate all user input
+- Sanitize output to prevent XSS
+- Use parameterized queries (MongoDB BSON)
+- Check authorization on every protected endpoint
+- Rate limit sensitive endpoints
+- Use HTTPS in production
+
+### Password Requirements
+- Minimum 8 characters
+- At least one uppercase letter
+- At least one lowercase letter
+- At least one number
+- At least one special character
+
+### JWT Token Structure
+```json
+{
+  "jti": "unique-token-id",
+  "sub": "user-id",
+  "email": "user@example.com",
+  "role": "user|admin|editor",
+  "ver": 1,
+  "exp": 1234567890,
+  "iat": 1234567890
+}
+```
+
+## Testing Guidelines
+
+### Test Location
+- Unit tests: Same package as code (`*_test.go`)
+- Integration tests: `tests/integration/`
+- Test helpers: `tests/helpers/`
+- Mocks: `tests/mocks/`
+
+### Test Naming
+- Function tests: `TestFunctionName_Scenario`
+- Table-driven tests preferred
+- Use `t.Run()` for subtests
+
+### Test Requirements
+- All new features must have tests
+- Minimum 70% code coverage for critical paths
+- Security-related code requires 90%+ coverage
+
+### Running Tests
+```bash
+make test           # All tests
+make test-unit      # Unit tests only
+make test-coverage  # With coverage report
+```
+
+## API Response Format
+
+### Success Response
+```json
+{
+  "status": "success",
+  "message": "operation.successful",
+  "data": { ... }
+}
+```
+
+### Error Response
+```json
+{
+  "status": "error",
+  "message": "error.message.key",
+  "code": "ERROR_CODE",
+  "details": { ... }
+}
+```
+
+## Database Guidelines
+
+### MongoDB Collections
+- Use snake_case for collection names
+- Always create indexes for query fields
+- Use TTL indexes for temporary data (tokens, logs)
+- Prefer embedding over references for related data
+
+### Common Fields
+```go
+type BaseModel struct {
+    ID        primitive.ObjectID `bson:"_id,omitempty"`
+    CreatedAt time.Time          `bson:"createdAt"`
+    UpdatedAt time.Time          `bson:"updatedAt"`
+    DeletedAt *time.Time         `bson:"deletedAt,omitempty"`
+}
+```
+
+## Environment-Specific Behavior
+
+### Development (ENV=development)
+- Verbose logging (pretty format)
+- Debug endpoints enabled
+- Testing mode features available
+- CORS allows localhost
+
+### Production (ENV=production)
+- JSON logging format
+- Debug endpoints disabled
+- Testing mode disabled
+- Strict CORS policy
+- HTTPS required
+
+## Git Commit Guidelines
+
+### Commit Message Format
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+### Types
+- feat: New feature
+- fix: Bug fix
+- docs: Documentation
+- style: Formatting
+- refactor: Code restructuring
+- test: Adding tests
+- chore: Maintenance
+
+### Examples
+```
+feat(auth): add two-factor authentication
+fix(rate-limit): resolve race condition in fallback store
+docs(readme): add deployment instructions
+```
+
+## Common Tasks
+
+### Adding a New Endpoint
+1. Define route in `routes/`
+2. Create handler in `handlers/` or `features/*/handler.go`
+3. Add service method in `services/` or `features/*/service.go`
+4. Add tests
+5. Update API documentation
+
+### Adding a New Feature Module
+1. Create directory in `features/`
+2. Create `module.go` with initialization
+3. Create `handler.go`, `service.go`, `routes.go`
+4. Add interfaces in `interfaces.go`
+5. Wire in `app/container.go`
+6. Add tests
+
+### Modifying Database Schema
+1. Update model in `models/`
+2. Update indexes in `config/indexes.go`
+3. Create migration script if needed
+4. Update repository queries
+5. Test with existing data
+
+## Troubleshooting
+
+### Common Issues
+
+**MongoDB Connection Failed**
+- Check `MONGO_URI` in `.env`
+- Verify MongoDB is running
+- Check network/firewall
+
+**JWT Validation Failed**
+- Verify `JWT_SECRET` matches
+- Check token expiration
+- Verify token version
+
+**Rate Limit Exceeded**
+- Check rate limit configuration
+- Verify user/IP identification
+- Check if using fallback store
+
+## Contact & Resources
+
+- API Documentation: `/docs` (when generated)
+- Health Check: `/health`
+- Metrics: `/metrics`
+
+## AI Assistant Instructions
+
+When modifying this codebase:
+1. Always read existing code before making changes
+2. Follow established patterns in the codebase
+3. Run tests before committing (`make test`)
+4. Check for security implications
+5. Update documentation if needed
+6. Use structured logging for new code
+7. Add error handling for all operations
+8. Never introduce breaking changes without discussion

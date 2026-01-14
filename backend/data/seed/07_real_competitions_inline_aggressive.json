@@ -1,0 +1,1974 @@
+[
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli01"
+    },
+    "title": "Winterclash 2026",
+    "description": "The most prestigious aggressive inline skating event in the world. Held at Area 51 Skatepark in Eindhoven. Street and Park competitions with international field.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Winterclash / Mindgame Productions",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-02-26T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-02-28T20:00:00.000Z"
+      },
+      "venue": "Area 51 Skatepark",
+      "city": "Eindhoven",
+      "country": "Netherlands",
+      "latitude": 51.4416,
+      "longitude": 5.4697,
+      "timeZone": "Europe/Amsterdam"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.winterclash.com/register",
+      "externalProvider": "Winterclash",
+      "maxParticipants": 200,
+      "minParticipants": 80,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-02-15T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 40.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Technical Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Creativity",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "jam",
+    "defaultHeatSize": 15,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Jam format with open sessions. Street and Park divisions. Best runs and tricks judged by international panel.",
+    "bannerUrl": "https://www.winterclash.com/images/wc2026-banner.jpg",
+    "imageUrls": [
+      "https://www.winterclash.com/images/wc2026-1.jpg"
+    ],
+    "tags": [
+      "winterclash",
+      "aggressive-inline",
+      "street",
+      "park",
+      "netherlands",
+      "international",
+      "legendary"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli02"
+    },
+    "title": "Skate Copenhagen 2026",
+    "description": "Annual aggressive inline skating competition in Copenhagen organized by Hvidovre Skating Club. Park and street competitions open to international participants.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Hvidovre Skating Club",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-03-27T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-03-29T18:00:00.000Z"
+      },
+      "venue": "Hvidovre Skatepark",
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "latitude": 55.6761,
+      "longitude": 12.5683,
+      "timeZone": "Europe/Copenhagen"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://hvidovre-skojteklub.dk/sk8cph/register",
+      "externalProvider": "Hvidovre Skating Club",
+      "maxParticipants": 80,
+      "minParticipants": 30,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-03-20T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 30.0,
+      "currency": "DKK",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Tricks",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Flow",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Consistency",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 3,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Park and street competitions. Best 2 runs count. Open to all skill levels with separate divisions.",
+    "bannerUrl": "https://hvidovre-skojteklub.dk/images/sk8cph-2026-banner.jpg",
+    "imageUrls": [
+      "https://hvidovre-skojteklub.dk/images/sk8cph-2026-1.jpg"
+    ],
+    "tags": [
+      "aggressive-inline",
+      "copenhagen",
+      "denmark",
+      "park",
+      "street",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli04"
+    },
+    "title": "Skate Camp Barcelona 2026",
+    "description": "5-day aggressive inline skating camp in Barcelona with competitive elements. Organized by Inline Certification Program. Workshops and contests for beginner through advanced levels.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Inline Certification Program",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-05-21T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-05-25T18:00:00.000Z"
+      },
+      "venue": "Various Barcelona skateparks",
+      "city": "Barcelona",
+      "country": "Spain",
+      "latitude": 41.3851,
+      "longitude": 2.1734,
+      "timeZone": "Europe/Madrid"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.inlinecertificationprogram.org/skate-camp-bcn",
+      "externalProvider": "ICP",
+      "maxParticipants": 60,
+      "minParticipants": 20,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-05-10T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 250.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Progression",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Creativity",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Participation",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 3,
+    "totalRounds": 1,
+    "currentRound": 0,
+    "hasQualifying": false,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "jam",
+    "defaultHeatSize": 20,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": false,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "5-day camp format with workshops and final contest. All skill levels welcome. Focus on progression and creativity.",
+    "bannerUrl": "https://www.inlinecertificationprogram.org/images/bcn-camp-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.inlinecertificationprogram.org/images/bcn-camp-2026-1.jpg"
+    ],
+    "tags": [
+      "aggressive-inline",
+      "camp",
+      "barcelona",
+      "spain",
+      "street",
+      "workshops",
+      "beginner-friendly"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli07"
+    },
+    "title": "Mile High Battle 2026",
+    "description": "The longest-running aggressive inline street competition in the world since 2001. Street spots throughout Denver with jam format and cash prizes.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Mile High Battle",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-12T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-09-12T20:00:00.000Z"
+      },
+      "venue": "Various Denver street spots",
+      "city": "Denver",
+      "country": "United States",
+      "latitude": 39.7392,
+      "longitude": -104.9903,
+      "timeZone": "America/Denver"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.milehighbattle.com/register",
+      "externalProvider": "Mile High Battle",
+      "maxParticipants": 100,
+      "minParticipants": 30,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-01T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 20.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Trick Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Creativity",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Spot Usage",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 3,
+    "totalRounds": 1,
+    "currentRound": 0,
+    "hasQualifying": false,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "jam",
+    "defaultHeatSize": 50,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": false,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Open street jam format. Multiple street spots around Denver. Cash prizes awarded. Longest-running rollerblading street comp since 2001.",
+    "bannerUrl": "https://www.milehighbattle.com/images/mhb-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.milehighbattle.com/images/mhb-2026-1.jpg"
+    ],
+    "tags": [
+      "aggressive-inline",
+      "street",
+      "jam",
+      "denver",
+      "usa",
+      "legendary",
+      "cash-prizes"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli08"
+    },
+    "title": "Montreal Cup 2026",
+    "description": "Canada's largest aggressive inline and quad skating event. 3-day competition on Rue Ontario in Hochelaga, Montreal. Street and park competitions.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Solo Inline",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-18T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-09-20T19:00:00.000Z"
+      },
+      "venue": "Rue Ontario, Hochelaga",
+      "city": "Montreal",
+      "country": "Canada",
+      "latitude": 45.5017,
+      "longitude": -73.5673,
+      "timeZone": "America/Montreal"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://montrealcup.ca/register",
+      "externalProvider": "Montreal Cup",
+      "maxParticipants": 150,
+      "minParticipants": 40,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-05T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 30.0,
+      "currency": "CAD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Technical Skill",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Style",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Flow",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 4,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 12,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "3-day event with street and park competitions. Both aggressive inline and quad skating divisions. Best 2 runs count.",
+    "bannerUrl": "https://montrealcup.ca/images/mc-2026-banner.jpg",
+    "imageUrls": [
+      "https://montrealcup.ca/images/mc-2026-1.jpg"
+    ],
+    "tags": [
+      "aggressive-inline",
+      "quad",
+      "street",
+      "park",
+      "montreal",
+      "canada",
+      "3-day-event"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli10"
+    },
+    "title": "Blading Cup 2026",
+    "description": "Annual aggressive inline skating competition in Santa Ana, California. Street and park competitions with competitors from 20+ countries. Cash prizes and trophies.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Blading Cup",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-10-30T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-11-01T19:00:00.000Z"
+      },
+      "venue": "Downtown Santa Ana - East End",
+      "city": "Santa Ana",
+      "country": "United States",
+      "latitude": 33.7455,
+      "longitude": -117.8677,
+      "timeZone": "America/Los_Angeles"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://bladingcup.com/register",
+      "externalProvider": "Blading Cup",
+      "maxParticipants": 150,
+      "minParticipants": 50,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-10-20T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 35.0,
+      "currency": "USD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Tricks",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Style",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Consistency",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 5,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 12,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Annual event since 2011. Street and park divisions. Competitors from 20+ countries. Cash prizes and trophies. Best 2 runs count.",
+    "bannerUrl": "https://bladingcup.com/images/bc-2026-banner.jpg",
+    "imageUrls": [
+      "https://bladingcup.com/images/bc-2026-1.jpg"
+    ],
+    "tags": [
+      "blading-cup",
+      "aggressive-inline",
+      "street",
+      "park",
+      "california",
+      "usa",
+      "international",
+      "cash-prizes"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli14"
+    },
+    "title": "European Inline Cup 2026 - Stop 1",
+    "description": "First stop of the European Inline Cup 2026 tour. Speed and freestyle inline skating competitions across Europe.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "European Inline Cup",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-04-18T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-04-19T18:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "TBA",
+      "country": "Europe",
+      "latitude": 50.8503,
+      "longitude": 4.3517,
+      "timeZone": "Europe/Brussels"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://europeancupinline.eu/register",
+      "externalProvider": "European Inline Cup",
+      "maxParticipants": 100,
+      "minParticipants": 30,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-04-10T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 40.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Performance",
+          "weight": 0.5,
+          "maxScore": 50
+        },
+        {
+          "name": "Technical Skill",
+          "weight": 0.3,
+          "maxScore": 30
+        },
+        {
+          "name": "Style",
+          "weight": 0.2,
+          "maxScore": 20
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 3,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "European Inline Cup tour. Speed and freestyle divisions. Tour points toward annual championship.",
+    "bannerUrl": "https://europeancupinline.eu/images/eic-2026-banner.jpg",
+    "imageUrls": [
+      "https://europeancupinline.eu/images/eic-2026-1.jpg"
+    ],
+    "tags": [
+      "european-inline-cup",
+      "inline",
+      "speed",
+      "freestyle",
+      "europe",
+      "tour",
+      "championship-points"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli15"
+    },
+    "title": "Bowlriders Cup Berlin 2026",
+    "description": "Aggressive inline bowl and park competition in Berlin. Part of European aggressive inline circuit.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Bowlriders Germany",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-06-06T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-06-07T19:00:00.000Z"
+      },
+      "venue": "Skatepark Berlin",
+      "city": "Berlin",
+      "country": "Germany",
+      "latitude": 52.5200,
+      "longitude": 13.4050,
+      "timeZone": "Europe/Berlin"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.bowlriders.com/register",
+      "externalProvider": "Bowlriders",
+      "maxParticipants": 60,
+      "minParticipants": 20,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-05-30T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 35.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Bowl Usage",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Tricks",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Flow",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 4,
+    "totalRounds": 1,
+    "currentRound": 0,
+    "hasQualifying": false,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "jam",
+    "defaultHeatSize": 20,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": false,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Bowl and park jam format. Open to all ages and skill levels. Focus on creativity and bowl riding.",
+    "bannerUrl": "https://www.bowlriders.com/images/berlin-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.bowlriders.com/images/berlin-2026-1.jpg"
+    ],
+    "tags": [
+      "bowlriders",
+      "aggressive-inline",
+      "bowl",
+      "park",
+      "berlin",
+      "germany",
+      "europe"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli16"
+    },
+    "title": "UK Inline Championships 2026",
+    "description": "Annual UK Inline Skating Championships. Aggressive inline street and park competitions for British and international riders.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "UK Inline Skating",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-07-18T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-07-19T18:00:00.000Z"
+      },
+      "venue": "TBA",
+      "city": "London",
+      "country": "United Kingdom",
+      "latitude": 51.5074,
+      "longitude": -0.1278,
+      "timeZone": "Europe/London"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.ukinline.co.uk/register",
+      "externalProvider": "UK Inline",
+      "maxParticipants": 80,
+      "minParticipants": 25,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-07-10T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 30.0,
+      "currency": "GBP",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Technical Ability",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Creativity",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Consistency",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 4,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "National championship format. Street and park divisions. Best 2 runs count. Open to international entries.",
+    "bannerUrl": "https://www.ukinline.co.uk/images/champs-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.ukinline.co.uk/images/champs-2026-1.jpg"
+    ],
+    "tags": [
+      "uk-championships",
+      "aggressive-inline",
+      "street",
+      "park",
+      "london",
+      "uk",
+      "national"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli17"
+    },
+    "title": "Dutch Inline Open 2026",
+    "description": "Open aggressive inline skating competition in the Netherlands. Street and park competitions with Dutch and international riders.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Dutch Inline Association",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-08-22T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-08-23T18:00:00.000Z"
+      },
+      "venue": "Rotterdam Skatepark",
+      "city": "Rotterdam",
+      "country": "Netherlands",
+      "latitude": 51.9225,
+      "longitude": 4.4792,
+      "timeZone": "Europe/Amsterdam"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.dutchinline.nl/register",
+      "externalProvider": "Dutch Inline",
+      "maxParticipants": 70,
+      "minParticipants": 25,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-08-15T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 25.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Tricks",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Flow",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 3,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 10,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Open format competition. Street and park divisions. Best 2 runs count. All skill levels welcome.",
+    "bannerUrl": "https://www.dutchinline.nl/images/open-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.dutchinline.nl/images/open-2026-1.jpg"
+    ],
+    "tags": [
+      "dutch-inline-open",
+      "aggressive-inline",
+      "street",
+      "park",
+      "rotterdam",
+      "netherlands",
+      "open-format"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli18"
+    },
+    "title": "Spanish Inline Championships 2026",
+    "description": "National aggressive inline skating championships of Spain. Street and park competitions for Spanish and international riders.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Federación Española de Patinaje",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-09-26T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-09-27T18:00:00.000Z"
+      },
+      "venue": "Skatepark de Gavà",
+      "city": "Barcelona",
+      "country": "Spain",
+      "latitude": 41.3028,
+      "longitude": 2.0028,
+      "timeZone": "Europe/Madrid"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fep.es/registro",
+      "externalProvider": "FEP",
+      "maxParticipants": 60,
+      "minParticipants": 20,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-09-15T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 25.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Técnica",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Dificultad",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Estilo",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 4,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Campeonato nacional de España. Categorías Street y Park. Mejor de 2 intentos.",
+    "bannerUrl": "https://www.fep.es/images/nacional-inline-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.fep.es/images/nacional-inline-2026-1.jpg"
+    ],
+    "tags": [
+      "campeonato-españa",
+      "aggressive-inline",
+      "street",
+      "park",
+      "barcelona",
+      "spain",
+      "national"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli19"
+    },
+    "title": "Paris Inline Jam 2026",
+    "description": "Street jam session in Paris for aggressive inline skaters. Open format with various street spots throughout the city.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Paris Inline Collective",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-10-10T11:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-10-10T19:00:00.000Z"
+      },
+      "venue": "Various Paris street spots",
+      "city": "Paris",
+      "country": "France",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "timeZone": "Europe/Paris"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.parisinline.fr/jam",
+      "externalProvider": "Paris Inline",
+      "maxParticipants": 80,
+      "minParticipants": 30,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-10-05T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 15.0,
+      "currency": "EUR",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Spot Usage",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Creativity",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Tricks",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": false
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 3,
+    "totalRounds": 1,
+    "currentRound": 0,
+    "hasQualifying": false,
+    "hasSemiFinals": false,
+    "hasFinals": false,
+    "enableHeats": true,
+    "defaultHeatMode": "jam",
+    "defaultHeatSize": 50,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": false,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Open street jam format. Multiple spots throughout Paris. Casual competition with prizes for best tricks.",
+    "bannerUrl": "https://www.parisinline.fr/images/jam-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.parisinline.fr/images/jam-2026-1.jpg"
+    ],
+    "tags": [
+      "aggressive-inline",
+      "street",
+      "jam",
+      "paris",
+      "france",
+      "open-format",
+      "casual"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli20"
+    },
+    "title": "Australian Inline Open 2026",
+    "description": "Open aggressive inline skating competition in Australia. Park and street competitions welcoming international riders.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Inline Australia",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-11-14T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-11-15T18:00:00.000Z"
+      },
+      "venue": "Melbourne Skatepark",
+      "city": "Melbourne",
+      "country": "Australia",
+      "latitude": -37.8136,
+      "longitude": 144.9631,
+      "timeZone": "Australia/Melbourne"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.inlineaustralia.com.au/register",
+      "externalProvider": "Inline Australia",
+      "maxParticipants": 60,
+      "minParticipants": 20,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2026-11-05T23:59:59.000Z"
+      },
+      "requiresApproval": false,
+      "entryFee": 40.0,
+      "currency": "AUD",
+      "registeredAthleteIds": [],
+      "waitlistAthleteIds": [],
+      "participantStatus": "open"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Tricks",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Flow",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Consistency",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ],
+      "dropHighest": false,
+      "dropLowest": true
+    },
+    "judgeIds": [],
+    "headJudgeIds": [],
+    "requiredJudges": 4,
+    "totalRounds": 2,
+    "currentRound": 0,
+    "hasQualifying": true,
+    "hasSemiFinals": false,
+    "hasFinals": true,
+    "enableHeats": true,
+    "defaultHeatMode": "sequential",
+    "defaultHeatSize": 8,
+    "status": "upcoming",
+    "isLive": false,
+    "allowLiveScoring": true,
+    "showLiveResults": true,
+    "isResultsPublished": false,
+    "rules": "Open format competition. Park and street divisions. Best 2 runs count. International entries welcome.",
+    "bannerUrl": "https://www.inlineaustralia.com.au/images/open-2026-banner.jpg",
+    "imageUrls": [
+      "https://www.inlineaustralia.com.au/images/open-2026-1.jpg"
+    ],
+    "tags": [
+      "australian-open",
+      "aggressive-inline",
+      "park",
+      "street",
+      "melbourne",
+      "australia",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli21"
+    },
+    "title": "Winterclash 2027",
+    "description": "The world's biggest aggressive inline skating event returns for its 2027 edition at Area 51, Eindhoven. The definitive world gathering for the community.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Winterclash",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-02-18T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-02-20T21:00:00.000Z"
+      },
+      "venue": "Area 51 Skatepark",
+      "city": "Eindhoven",
+      "country": "Netherlands",
+      "latitude": 51.4416,
+      "longitude": 5.4697,
+      "timeZone": "Europe/Amsterdam"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.winterclash.com/tickets",
+      "externalProvider": "Winterclash",
+      "maxParticipants": 200,
+      "minParticipants": 80,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2027-02-05T23:59:59.000Z"
+      },
+      "requiresApproval": true,
+      "entryFee": 45.0,
+      "currency": "EUR"
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Difficulty",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Creativity",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Style",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ]
+    },
+    "status": "upcoming",
+    "rules": "Pro, Women, and Junior categories. Jam format. Special best trick session.",
+    "bannerUrl": "https://www.winterclash.com/images/banner2027.jpg",
+    "tags": [
+      "winterclash",
+      "aggressive-inline",
+      "international",
+      "netherlands",
+      "legendary"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli22"
+    },
+    "title": "Blading Cup Santa Ana 2027 (Spring)",
+    "description": "The Spring edition of the legendary Blading Cup in downtown Santa Ana. Street competition on the classic East End course.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "The Blading Cup",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-04-23T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-04-24T20:00:00.000Z"
+      },
+      "venue": "Downtown Santa Ana",
+      "city": "Santa Ana",
+      "country": "United States",
+      "latitude": 33.7455,
+      "longitude": -117.8677,
+      "timeZone": "America/Los_Angeles"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://bladingcup.com/registration",
+      "externalProvider": "Blading Cup",
+      "maxParticipants": 150,
+      "minParticipants": 50,
+      "currentParticipants": 0,
+      "registrationDeadline": {
+        "$date": "2027-04-10T23:59:59.000Z"
+      }
+    },
+    "scoringCriteria": {
+      "type": "weighted_average",
+      "minScore": 0,
+      "maxScore": 100,
+      "criteria": [
+        {
+          "name": "Tricks",
+          "weight": 0.4,
+          "maxScore": 40
+        },
+        {
+          "name": "Style",
+          "weight": 0.35,
+          "maxScore": 35
+        },
+        {
+          "name": "Consistency",
+          "weight": 0.25,
+          "maxScore": 25
+        }
+      ]
+    },
+    "status": "upcoming",
+    "bannerUrl": "https://bladingcup.com/images/spring2027.jpg",
+    "tags": [
+      "blading-cup",
+      "aggressive-inline",
+      "california",
+      "usa",
+      "street"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli23"
+    },
+    "title": "FISE Montpellier 2027",
+    "description": "The peak of the FISE World Series. Pro and amateur roller freestyle park competitions on the banks of the Lez river.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "FISE",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-05-05T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-05-09T20:00:00.000Z"
+      },
+      "venue": "Banks of the Lez",
+      "city": "Montpellier",
+      "country": "France",
+      "latitude": 43.6108,
+      "longitude": 3.8767,
+      "timeZone": "Europe/Paris"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.fise.fr/en/registration",
+      "externalProvider": "FISE",
+      "maxParticipants": 120,
+      "minParticipants": 40
+    },
+    "status": "upcoming",
+    "tags": [
+      "fise",
+      "montpellier",
+      "france",
+      "park",
+      "world-series"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli24"
+    },
+    "title": "Shred Da Ground 2027",
+    "description": "The premier street skating jam in France. Real street spots, massive gaps, and the best energy in the scene.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Shred Da Ground",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-06-19T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-06-19T22:00:00.000Z"
+      },
+      "venue": "Various Paris spots",
+      "city": "Paris",
+      "country": "France",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "timeZone": "Europe/Paris"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://shreddaground.com/register",
+      "externalProvider": "Shred Da Ground"
+    },
+    "status": "upcoming",
+    "tags": [
+      "shred-da-ground",
+      "france",
+      "street",
+      "jam",
+      "paris"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli25"
+    },
+    "title": "NASS Festival 2027",
+    "description": "UK's biggest action sports and music festival. Professional aggressive inline park contest inner the massive NASS warehouse.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "NASS",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-07-08T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-07-11T20:00:00.000Z"
+      },
+      "venue": "Bath & West Showground",
+      "city": "Shepton Mallet",
+      "country": "United Kingdom",
+      "latitude": 51.1878,
+      "longitude": -2.5583,
+      "timeZone": "Europe/London"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.nassfestival.com/athlete-registration",
+      "externalProvider": "NASS"
+    },
+    "status": "upcoming",
+    "tags": [
+      "nass",
+      "uk",
+      "park",
+      "festival",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli26"
+    },
+    "title": "Extreme Barcelona 2027",
+    "description": "Barcelona becomes the urban sports capital once again. Massive aggressive inline contest at the Parc del Forum.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Extreme Barcelona",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-09-17T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-09-19T21:00:00.000Z"
+      },
+      "venue": "Parc del Forum",
+      "city": "Barcelona",
+      "country": "Spain",
+      "latitude": 41.4097,
+      "longitude": 2.2215,
+      "timeZone": "Europe/Madrid"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://www.extremebarcelona.com/en/reg",
+      "externalProvider": "Extreme Barcelona"
+    },
+    "status": "upcoming",
+    "tags": [
+      "extreme-barcelona",
+      "spain",
+      "barcelona",
+      "park",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli27"
+    },
+    "title": "Blading Cup Santa Ana 2027 (Fall)",
+    "description": "The main event. The biggest street contest in the US closes out the year in Santa Ana. Pro, Open, and Women divisions.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "The Blading Cup",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-11-05T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-11-07T20:00:00.000Z"
+      },
+      "venue": "Downtown Santa Ana",
+      "city": "Santa Ana",
+      "country": "United States",
+      "latitude": 33.7455,
+      "longitude": -117.8677,
+      "timeZone": "America/Los_Angeles"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://bladingcup.com/tickets",
+      "externalProvider": "Blading Cup"
+    },
+    "status": "upcoming",
+    "tags": [
+      "blading-cup",
+      "fall",
+      "california",
+      "usa",
+      "street",
+      "final"
+    ],
+    "createdAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli28"
+    },
+    "title": "Shred Al Dente 2026 - Bogotá",
+    "description": "Colombia's premier street skating competition. Known for high-level technical skating and an incredible atmosphere in the heart of Bogotá.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Shred Al Dente / Rollerblade Colombia",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-08-15T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-08-15T22:00:00.000Z"
+      },
+      "venue": "Various Bogotá Street Spots",
+      "city": "Bogotá",
+      "country": "Colombia",
+      "latitude": 4.7110,
+      "longitude": -74.0721,
+      "timeZone": "America/Bogota"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://shredaldente.co/bogota-2026",
+      "externalProvider": "Shred Al Dente"
+    },
+    "status": "upcoming",
+    "tags": [
+      "shred-al-dente",
+      "colombia",
+      "bogota",
+      "street",
+      "latam"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli29"
+    },
+    "title": "São Paulo Street Jam 2026",
+    "description": "Brazil's biggest street blading event. A full day of shredding the most iconic spots in South America's largest city.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Rolling Sports / Brazil Blading",
+    "competitionType": "individual",
+    "format": "single_round",
+    "discipline": "inline",
+    "category": "Street",
+    "schedule": {
+      "startDate": {
+        "$date": "2026-11-21T09:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2026-11-21T21:00:00.000Z"
+      },
+      "venue": "São Paulo City Center",
+      "city": "São Paulo",
+      "country": "Brazil",
+      "latitude": -23.5505,
+      "longitude": -46.6333,
+      "timeZone": "America/Sao_Paulo"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://rollingsports.com.br/events",
+      "externalProvider": "Rolling Sports"
+    },
+    "status": "upcoming",
+    "tags": [
+      "brazil",
+      "sao-paulo",
+      "street",
+      "jam",
+      "latam"
+    ],
+    "createdAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli30"
+    },
+    "title": "Mexico City Open 2027",
+    "description": "The major international open in Mexico. Park and Street divisions. Attracting top talent from North and South America.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "Federación Mexicana de Patinaje",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-03-12T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-03-14T19:00:00.000Z"
+      },
+      "venue": "Skatepark Constituyentes",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "latitude": 19.4326,
+      "longitude": -99.1332,
+      "timeZone": "America/Mexico_City"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://femepar.mx/inscripciones",
+      "externalProvider": "FEMEPAR"
+    },
+    "status": "upcoming",
+    "tags": [
+      "mexico",
+      "mexico-city",
+      "park",
+      "street",
+      "latam",
+      "international"
+    ],
+    "createdAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "67c0000b1234567890inli31"
+    },
+    "title": "Buenos Aires Extreme 2027",
+    "description": "The definitive action sports festival in Argentina. Aggressive inline skating park competition at the iconic Costanera Norte skatepark.",
+    "organizerId": {
+      "$oid": "65c0001a1234567890abcd21"
+    },
+    "organizerName": "CAP - Confederación Argentina de Patinaje",
+    "competitionType": "individual",
+    "format": "multi_round",
+    "discipline": "inline",
+    "category": "Park",
+    "schedule": {
+      "startDate": {
+        "$date": "2027-11-19T10:00:00.000Z"
+      },
+      "endDate": {
+        "$date": "2027-11-21T21:00:00.000Z"
+      },
+      "venue": "Costanera Norte Skatepark",
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "latitude": -34.6037,
+      "longitude": -58.3816,
+      "timeZone": "America/Argentina/Buenos_Aires"
+    },
+    "registration": {
+      "type": "external",
+      "externalRegistrationUrl": "https://capatin.org/competencias",
+      "externalProvider": "CAP"
+    },
+    "status": "upcoming",
+    "tags": [
+      "argentina",
+      "buenos-aires",
+      "park",
+      "extreme",
+      "latam"
+    ],
+    "createdAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2027-01-12T10:00:00.000Z"
+    }
+  }
+]

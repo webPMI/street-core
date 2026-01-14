@@ -1,0 +1,460 @@
+# Profile Feature - Frontend Rules
+
+## Architecture Principles
+
+### Monolith by Features
+- All profile-related code in `lib/features/profile/`
+- Structure: models/, services/, bloc/, pages/, widgets/
+- Feature-specific widgets in widgets/, shared widgets in lib/core/widgets/
+
+### Feature Separation
+- **Profile handles**: User profiles, posts CRUD, user stats, profile display
+- **Social handles**: Comments, likes, saves, comment replies
+- Profile USES social widgets (CommentCard, CommentInputField) - don't duplicate
+- Keep feature boundaries clear
+
+## Code Organization
+
+### Directory Structure
+```
+lib/features/profile/
+├── models/           # PostModel, UserModel, StatsModel
+├── services/         # PostService, PostRepository
+├── bloc/             # UserPostsCubit, UserPostsState
+├── pages/            # ProfilePage, PostDetailPage, SavedPostsPage
+├── widgets/          # ProfileHeader, ProfileStats, PostCard
+├── posts/widgets/    # Post-specific widgets
+└── profile_routes.dart
+```
+
+### Model Layer
+- All models must extend Equatable for value comparison
+- Include fromJson/toJson for API serialization
+- Use copyWith for immutable updates
+- Example:
+```dart
+class PostModel extends Equatable {
+  final String id;
+  final bool isLikedByCurrentUser;
+  final bool isSavedByCurrentUser;
+
+  // NEVER use default values for interaction fields
+  // Backend always sends them (no omitempty)
+
+  @override
+  List<Object?> get props => [id, isLikedByCurrentUser, ...];
+
+  PostModel copyWith({bool? isLikedByCurrentUser, ...}) { ... }
+}
+```
+
+### Service Layer
+- Repository handles API calls via ApiService.useFetch
+- Service adds business logic on top of repository
+- Use BaseRepository methods: fetchPaginatedList, create, update, delete
+- Example:
+```dart
+class PostRepository extends BaseRepository<PostModel> {
+  PostRepository() : super(endpoint: '/posts', fromJson: PostModel.fromJson);
+
+  Future<Map<String, dynamic>> getUserPostsPaginated(String userId, {int page = 1}) async {
+    return fetchPaginatedList(
+      path: '/users/$userId/posts',
+      queryParameters: {'page': page, 'limit': 20},
+    );
+  }
+}
+```
+
+### BLoC Layer (Cubit Pattern)
+- Use Cubit (not Bloc) for simpler state management
+- States must be immutable and extend Equatable
+- Emit new instances for every state change
+- Handle optimistic updates with error rollback
+
+## State Management
+
+### User Posts Cubit
+```dart
+class UserPostsCubit extends Cubit<UserPostsState> {
+  final PostService _postService;
+
+  // Optimistic updates for interactions
+  Future<void> toggleLike(String postId) async {
+    final currentState = state;
+    if (currentState is! UserPostsLoaded) return;
+
+    // 1. Find post
+    final index = currentState.posts.indexWhere((p) => p.id == postId);
+    if (index == -1) return;
+
+    final post = currentState.posts[index];
+    final isLiked = post.isLikedByCurrentUser;
+
+    // 2. Optimistic update
+    final updatedPost = post.copyWith(
+      likesCount: isLiked ? post.likesCount - 1 : post.likesCount + 1,
+      isLikedByCurrentUser: !isLiked,
+    );
+
+    // IMPORTANT: Use typed List.from
+    final updatedPosts = List<PostModel>.from(currentState.posts);
+    updatedPosts[index] = updatedPost;
+    emit(currentState.copyWith(posts: updatedPosts));
+
+    // 3. Real API call
+    try {
+      if (isLiked) {
+        await _postService.unlikePost(postId);
+      } else {
+        await _postService.likePost(postId);
+      }
+    } catch (e) {
+      // 4. Revert on error
+      emit(currentState);
+    }
+  }
+}
+```
+
+### State Classes
+```dart
+abstract class UserPostsState extends Equatable {
+  const UserPostsState();
+  @override
+  List<Object?> get props => [];
+}
+
+class UserPostsLoaded extends UserPostsState {
+  final List<PostModel> posts;
+  final bool hasMore;
+  final int currentPage;
+
+  const UserPostsLoaded({
+    required this.posts,
+    this.hasMore = false,
+    this.currentPage = 1,
+  });
+
+  @override
+  List<Object?> get props => [posts, hasMore, currentPage];
+
+  // copyWith for immutable updates
+  UserPostsLoaded copyWith({List<PostModel>? posts, bool? hasMore, int? currentPage}) {
+    return UserPostsLoaded(
+      posts: posts ?? this.posts,
+      hasMore: hasMore ?? this.hasMore,
+      currentPage: currentPage ?? this.currentPage,
+    );
+  }
+}
+```
+
+## UI Components
+
+### Using Social Components
+```dart
+// ✅ DO: Use social components for comments
+import '../../social/comment/comment_card.dart';
+import '../../social/comment/comment_input_field.dart';
+import '../../social/comment/comments_cubit.dart';
+
+// In PostDetailPage
+BlocProvider(
+  create: (_) => getIt<CommentsCubit>()..fetchComments(postId),
+  child: Column(children: [
+    BlocBuilder<CommentsCubit, CommentsState>(
+      builder: (context, state) {
+        if (state is CommentsLoaded) {
+          return ListView.builder(
+            itemCount: state.comments.length,
+            itemBuilder: (context, index) {
+              return CommentCard(
+                comment: state.comments[index],
+                onLike: () => context.read<CommentsCubit>().toggleLike(comment.id),
+                onReply: () => _handleReply(comment),
+              );
+            },
+          );
+        }
+      },
+    ),
+    CommentInputField(onSubmit: (text) => _submitComment(text)),
+  ]),
+)
+
+// ❌ DON'T: Create duplicate comment widgets in profile
+```
+
+### Post Card Widget
+```dart
+class PostCard extends StatelessWidget {
+  final PostModel post;
+  final VoidCallback? onLike;
+  final VoidCallback? onComment;
+  final VoidCallback? onSave;
+  final VoidCallback? onShare;
+  final VoidCallback? onDelete;
+  final VoidCallback? onPostTap;
+
+  // Widget builds full Instagram-style post
+  // Handles: header, media carousel, actions, caption, stats
+}
+```
+
+### Profile Page Structure
+```dart
+// Use NestedScrollView for collapsible header
+NestedScrollView(
+  headerSliverBuilder: (context, innerBoxIsScrolled) => [
+    SliverToBoxAdapter(
+      child: Column(children: [
+        ProfileHeader(user: user),
+        ProfileStatsRow(...),
+        ProfileActionButtons(),
+        StoriesHighlights(),
+        TabBar(tabs: [Posts, Saved, Tagged]),
+      ]),
+    ),
+  ],
+  body: TabBarView(children: [
+    _buildPostsGrid(context),  // Now uses ListView, not Grid
+    _buildSavedPostsTab(context),
+    _buildTaggedTab(context),
+  ]),
+)
+```
+
+## Navigation
+
+### Route Management
+```dart
+// Define routes in profile_routes.dart
+class ProfileRoutes {
+  static const String profile = '/profile';
+  static const String postDetail = '/profile/posts/:id';
+  static const String postCreate = '/profile/posts/create';
+  static const String savedPosts = '/profile/saved';
+  static const String editProfile = '/profile/edit';
+
+  static String getPostDetail(String postId) => '/profile/posts/$postId';
+  static String getUserProfile(String userId) => '/users/$userId';
+}
+```
+
+### Navigation Best Practices
+```dart
+// ✅ DO: Use context.push() to maintain stack
+onTap: () => context.push(ProfileRoutes.getPostDetail(post.id))
+
+// ❌ DON'T: Use NavigationService().go() - replaces stack
+onTap: () => NavigationService().go(context, route)  // BAD
+
+// For going back
+onBackPressed: () => context.pop()
+```
+
+## API Integration
+
+### Pagination Response Structure
+```dart
+// Backend sends: {status, message, data: {data: [...], pagination: {...}}}
+Future<Map<String, dynamic>> getPostCommentsPaginated(String postId, {int page = 1}) async {
+  final response = await useFetch(/* ... */);
+
+  if (response.status == 'success' && response.data != null) {
+    final responseData = response.data as Map<String, dynamic>;
+
+    // IMPORTANT: Backend uses 'data' not 'items'
+    final items = (responseData['data'] as List<dynamic>)
+        .map((e) => Comment.fromJson(e))
+        .toList();
+
+    final pagination = responseData['pagination'] as Map<String, dynamic>;
+
+    return {
+      'items': items,
+      'currentPage': pagination['currentPage'],
+      'totalPages': pagination['totalPages'],
+      'totalItems': pagination['totalItems'],
+      'hasNextPage': pagination['hasNext'],  // Note: 'hasNext' not 'hasNextPage'
+      'hasPreviousPage': pagination['hasPrevious'],
+    };
+  }
+  throw Exception('Failed to fetch comments');
+}
+```
+
+### Error Handling
+```dart
+try {
+  final response = await _postService.createPost(post);
+  if (mounted) {
+    context.push(ProfileRoutes.getPostDetail(response.id));
+  }
+} catch (e) {
+  if (mounted) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(context.tr('error.creating.post'))),
+    );
+  }
+}
+```
+
+## Common Pitfalls
+
+### ❌ DON'T
+- Use List.from() without type parameter - causes type errors
+- Use default values for isLikedByCurrentUser - backend always sends it
+- Duplicate comment widgets - use social feature components
+- Use NavigationService().go() from profile - breaks navigation stack
+- Forget to check `mounted` before showing dialogs/snackbars
+- Use debugPrint in production code - use AppLogger instead
+
+### ✅ DO
+- Use List<PostModel>.from() with explicit type
+- Trust backend to always send interaction fields
+- Import and use social widgets for comments
+- Use context.push() for navigation within profile
+- Check `if (mounted)` before async UI operations
+- Use AppLogger.debug/info/error for logging
+
+## Dependency Injection
+
+### Service Registration
+```dart
+// In lib/core/di/injection.dart
+void setupProfileDependencies() {
+  // Repositories
+  getIt.registerLazySingleton(() => PostRepository());
+  getIt.registerLazySingleton(() => UserRepository());
+
+  // Services
+  getIt.registerLazySingleton(() => PostService(getIt()));
+
+  // Cubits (Factories - new instance each time)
+  getIt.registerFactory(() => UserPostsCubit(getIt()));
+}
+```
+
+### Usage in Widgets
+```dart
+// In StatefulWidget
+late UserPostsCubit _userPostsCubit;
+
+@override
+void initState() {
+  super.initState();
+  _userPostsCubit = getIt<UserPostsCubit>();
+  _userPostsCubit.fetchUserPosts(userId);
+}
+
+@override
+void dispose() {
+  _userPostsCubit.close();  // Important: clean up
+  super.dispose();
+}
+
+// Provide to widget tree
+BlocProvider.value(
+  value: _userPostsCubit,
+  child: /* ... */,
+)
+```
+
+## Theming
+
+### Using Theme
+```dart
+final theme = Theme.of(context);
+final colorScheme = theme.colorScheme;
+
+// Use semantic colors
+color: theme.colorScheme.primary
+color: theme.colorScheme.error
+color: theme.colorScheme.onSurface
+color: theme.colorScheme.onSurfaceVariant
+```
+
+### Custom Widgets
+- Support all 8 app themes (Nature, Ocean, Sporty, Professional, etc.)
+- Use theme.textTheme for typography
+- Use theme.colorScheme for colors
+- Test with different themes
+
+## Internationalization
+
+### Translation Keys
+```dart
+import '../../../core/lang/context_tr.dart';
+import '../../../core/lang/locale_keys.dart';
+
+// Use translation helper
+Text(context.tr(LocaleKeys.profile))
+Text(context.tr('error.creating.post'))
+
+// For dynamic values
+Text(context.tr('posts.count', args: {'count': postsCount}))
+```
+
+### Translation Files
+- Primary language: Spanish (ES)
+- Update translations in: `lib/core/lang/translations/es/`
+- Backend error codes must match translation keys
+
+## Performance
+
+### Optimizations
+- Use const constructors when possible
+- Implement ListView.builder for long lists
+- Use Hero widgets for shared element transitions
+- Lazy load images with caching
+- Paginate all list views
+
+### Future Improvements
+- Implement pull-to-refresh
+- Add infinite scroll
+- Cache user profiles
+- Preload adjacent posts
+
+## Testing
+
+### Widget Tests
+- Test state changes in Cubits
+- Verify optimistic updates and rollback
+- Test navigation flows
+- Mock services and repositories
+
+### Integration Tests
+- Test full user flows (view profile → view post → comment)
+- Verify pagination works
+- Test like/save interactions
+
+## Security
+
+### User Data
+- Never log sensitive information
+- Clear secure storage on logout
+- Validate user ownership before delete/edit
+
+### Input Validation
+- Sanitize user input before sending to backend
+- Validate file sizes before upload
+- Check image dimensions
+
+## Migration Notes
+
+### Dead Code (TODO)
+- Remove temporary debugPrint statements
+- Clean up commented code blocks
+- Remove unused imports
+
+### Improvements Needed
+- Consolidate duplicate getCurrentUser methods
+- Improve error messages (use translation keys)
+- Add loading skeletons for better UX
+
+## Related Documentation
+- Architecture: `/docs/architecture/adr/ADR-005-hybrid-architecture.md`
+- Translations: `/docs/modules/profile/TRANSLATIONS.md`
+- State Management: `/docs/guides/bloc_pattern.md`

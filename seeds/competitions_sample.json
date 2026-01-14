@@ -1,0 +1,236 @@
+{
+  "competitions": [
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "title": "Madrid Street Battle 2026",
+      "description": "Annual street skating competition featuring the best athletes from across Spain and Europe. Join us for an unforgettable day of tricks, style, and competition.",
+      "organizerId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1a1"},
+      "organizerName": "Street Skating Madrid",
+      "competitionType": "individual",
+      "format": "single_round",
+      "discipline": "street_skating",
+      "schedule": {
+        "startDate": {"$date": "2026-03-15T09:00:00Z"},
+        "endDate": {"$date": "2026-03-15T19:00:00Z"},
+        "venue": "Skate Plaza Central",
+        "city": "Madrid",
+        "country": "Spain",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "timeZone": "Europe/Madrid"
+      },
+      "registration": {
+        "maxParticipants": 50,
+        "minParticipants": 8,
+        "currentParticipants": 5,
+        "registrationDeadline": {"$date": "2026-03-10T23:59:59Z"},
+        "requiresApproval": false,
+        "entryFee": 25.0,
+        "currency": "EUR",
+        "registeredAthleteIds": [
+          {"$oid": "60a7b3c4e5f6a7b8c9d0e2a1"},
+          {"$oid": "60a7b3c4e5f6a7b8c9d0e2a2"},
+          {"$oid": "60a7b3c4e5f6a7b8c9d0e2a3"},
+          {"$oid": "60a7b3c4e5f6a7b8c9d0e2a4"},
+          {"$oid": "60a7b3c4e5f6a7b8c9d0e2a5"}
+        ],
+        "waitlistAthleteIds": [],
+        "participantStatus": "open"
+      },
+      "scoringCriteria": {
+        "type": "weighted_average",
+        "minScore": 0,
+        "maxScore": 100,
+        "criteria": [
+          {
+            "name": "Technical Execution",
+            "weight": 0.35,
+            "maxScore": 35
+          },
+          {
+            "name": "Difficulty",
+            "weight": 0.30,
+            "maxScore": 30
+          },
+          {
+            "name": "Style & Flow",
+            "weight": 0.25,
+            "maxScore": 25
+          },
+          {
+            "name": "Creativity",
+            "weight": 0.10,
+            "maxScore": 10
+          }
+        ],
+        "dropHighest": true,
+        "dropLowest": true
+      },
+      "judgeIds": [
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a1"},
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a2"},
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a3"}
+      ],
+      "headJudgeIds": [
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a1"}
+      ],
+      "requiredJudges": 3,
+      "totalRounds": 1,
+      "currentRound": 0,
+      "roundIds": [],
+      "hasQualifying": false,
+      "hasSemiFinals": false,
+      "hasFinals": true,
+      "enableHeats": true,
+      "defaultHeatMode": "sequential",
+      "defaultHeatSize": 10,
+      "enableHeatCheckIn": true,
+      "defaultRequiredRoles": ["judge", "speaker"],
+      "defaultMinJudgesActive": 2,
+      "scoreGracePeriodMinutes": 15,
+      "status": "upcoming",
+      "isLive": false,
+      "allowLiveScoring": true,
+      "showLiveResults": true,
+      "isResultsPublished": false,
+      "rules": "Standard street skating rules apply. Each athlete has 2 runs of 45 seconds each. Best run counts for final score.",
+      "bannerUrl": "https://example.com/images/madrid-street-battle.jpg",
+      "imageUrls": [],
+      "tags": ["street", "skating", "madrid", "2026"],
+      "createdAt": {"$date": "2026-01-05T10:00:00Z"},
+      "updatedAt": {"$date": "2026-01-10T15:30:00Z"}
+    }
+  ],
+  "categories": [
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e4f1"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "name": "Men's Pro",
+      "description": "Professional male athletes",
+      "maxParticipants": 30,
+      "minParticipants": 5,
+      "currentParticipants": 3,
+      "participantIds": [
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e2a1"},
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e2a3"},
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e2a5"}
+      ],
+      "judgeIds": [
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a1"},
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a2"}
+      ],
+      "status": "active",
+      "order": 1,
+      "createdAt": {"$date": "2026-01-05T10:00:00Z"},
+      "updatedAt": {"$date": "2026-01-10T15:30:00Z"}
+    },
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e4f2"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "name": "Women's Pro",
+      "description": "Professional female athletes",
+      "maxParticipants": 20,
+      "minParticipants": 3,
+      "currentParticipants": 2,
+      "participantIds": [
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e2a2"},
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e2a4"}
+      ],
+      "judgeIds": [
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a2"},
+        {"$oid": "60a7b3c4e5f6a7b8c9d0e3a3"}
+      ],
+      "status": "active",
+      "order": 2,
+      "createdAt": {"$date": "2026-01-05T10:00:00Z"},
+      "updatedAt": {"$date": "2026-01-10T15:30:00Z"}
+    }
+  ],
+  "participants": [
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e5f1"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "athleteId": {"$oid": "60a7b3c4e5f6a7b8c9d0e2a1"},
+      "athleteName": "Juan Perez",
+      "athleteNumber": "001",
+      "status": "approved",
+      "registeredAt": {"$date": "2026-01-08T14:20:00Z"},
+      "approvedAt": {"$date": "2026-01-08T14:25:00Z"},
+      "notes": "",
+      "createdAt": {"$date": "2026-01-08T14:20:00Z"},
+      "updatedAt": {"$date": "2026-01-08T14:25:00Z"}
+    },
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e5f2"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "athleteId": {"$oid": "60a7b3c4e5f6a7b8c9d0e2a2"},
+      "athleteName": "Sofia Garcia",
+      "athleteNumber": "002",
+      "status": "approved",
+      "registeredAt": {"$date": "2026-01-08T15:10:00Z"},
+      "approvedAt": {"$date": "2026-01-08T15:15:00Z"},
+      "notes": "",
+      "createdAt": {"$date": "2026-01-08T15:10:00Z"},
+      "updatedAt": {"$date": "2026-01-08T15:15:00Z"}
+    },
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e5f3"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "athleteId": {"$oid": "60a7b3c4e5f6a7b8c9d0e2a3"},
+      "athleteName": "Diego Martinez",
+      "athleteNumber": "003",
+      "status": "approved",
+      "registeredAt": {"$date": "2026-01-09T09:30:00Z"},
+      "approvedAt": {"$date": "2026-01-09T09:35:00Z"},
+      "notes": "",
+      "createdAt": {"$date": "2026-01-09T09:30:00Z"},
+      "updatedAt": {"$date": "2026-01-09T09:35:00Z"}
+    },
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e5f4"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "athleteId": {"$oid": "60a7b3c4e5f6a7b8c9d0e2a4"},
+      "athleteName": "Ana Lopez",
+      "athleteNumber": "004",
+      "status": "approved",
+      "registeredAt": {"$date": "2026-01-09T10:15:00Z"},
+      "approvedAt": {"$date": "2026-01-09T10:20:00Z"},
+      "notes": "",
+      "createdAt": {"$date": "2026-01-09T10:15:00Z"},
+      "updatedAt": {"$date": "2026-01-09T10:20:00Z"}
+    },
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e5f5"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "athleteId": {"$oid": "60a7b3c4e5f6a7b8c9d0e2a5"},
+      "athleteName": "Miguel Torres",
+      "athleteNumber": "005",
+      "status": "approved",
+      "registeredAt": {"$date": "2026-01-09T11:00:00Z"},
+      "approvedAt": {"$date": "2026-01-09T11:05:00Z"},
+      "notes": "",
+      "createdAt": {"$date": "2026-01-09T11:00:00Z"},
+      "updatedAt": {"$date": "2026-01-09T11:05:00Z"}
+    }
+  ],
+  "rounds": [
+    {
+      "_id": {"$oid": "60a7b3c4e5f6a7b8c9d0e6f1"},
+      "competitionId": {"$oid": "60a7b3c4e5f6a7b8c9d0e1f1"},
+      "name": "Finals",
+      "order": 1,
+      "startTime": {"$date": "2026-03-15T14:00:00Z"},
+      "status": "pending",
+      "description": "Final round - best run counts",
+      "maxAthletes": 50,
+      "hasHeats": true,
+      "heatIds": [],
+      "currentHeat": 0,
+      "totalHeats": 0,
+      "createdAt": {"$date": "2026-01-10T10:00:00Z"},
+      "updatedAt": {"$date": "2026-01-10T10:00:00Z"}
+    }
+  ],
+  "heats": [],
+  "scores": []
+}

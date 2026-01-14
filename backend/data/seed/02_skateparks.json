@@ -1,0 +1,663 @@
+[
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce01"
+    },
+    "name": "Skatepark de Gavà",
+    "description": "Uno de los skateparks más emblemáticos de Cataluña. Bowl profundo, street plaza y área de mini ramp. Superficie de hormigón de alta calidad.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Passeig Marítim, s/n",
+    "city": "Gavà",
+    "country": "España",
+    "latitude": 41.3028,
+    "longitude": 2.0028,
+    "features": [
+      "Bowl profundo (2.5m)",
+      "Street plaza con escaleras y rails",
+      "Mini ramp (1.2m)",
+      "Quarter pipes",
+      "Ledges y hubbas",
+      "Iluminación nocturna"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Intermedio-Avanzado",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.7,
+    "imageUrls": [
+      "https://placeholder.com/skatepark-gava-1.jpg",
+      "https://placeholder.com/skatepark-gava-2.jpg"
+    ],
+    "tags": [
+      "bowl",
+      "street",
+      "free",
+      "24h"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-10T12:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce02"
+    },
+    "name": "Barcelona Skatepark - Forum",
+    "description": "Skatepark olímpico del Forum. Diseñado para eventos profesionales. Incluye bowl gigante y zona street completa.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline"
+    ],
+    "address": "Ronda del Litoral",
+    "city": "Barcelona",
+    "country": "España",
+    "latitude": 41.4094,
+    "longitude": 2.2168,
+    "features": [
+      "Bowl olímpico (3m)",
+      "Street plaza profesional",
+      "Vert ramp (3.5m)",
+      "Rails de diferentes alturas",
+      "Escaleras 4-6-8",
+      "Zona de calentamiento"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Avanzado",
+    "openHours": "08:00-22:00",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.9,
+    "imageUrls": [
+      "https://placeholder.com/forum-skatepark-1.jpg"
+    ],
+    "tags": [
+      "olympic",
+      "professional",
+      "bowl",
+      "street",
+      "vert"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-09T15:30:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce03"
+    },
+    "name": "Madrid Río Skatepark",
+    "description": "Skatepark moderno junto al río Manzanares. Diseño innovador con múltiples líneas y obstáculos creativos.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Paseo de la Ermita del Santo",
+    "city": "Madrid",
+    "country": "España",
+    "latitude": 40.3980,
+    "longitude": -3.7254,
+    "features": [
+      "Bowl mediano (2m)",
+      "Street plaza extensa",
+      "Pump track",
+      "Handrails variados",
+      "Manuales largos",
+      "Vistas al río"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Todos los niveles",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.6,
+    "imageUrls": [
+      "https://placeholder.com/madrid-rio-1.jpg",
+      "https://placeholder.com/madrid-rio-2.jpg"
+    ],
+    "tags": [
+      "bowl",
+      "street",
+      "pump track",
+      "free",
+      "riverside"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-08T11:20:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce04"
+    },
+    "name": "Skatepark de La Elipa",
+    "description": "Skatepark clásico de Madrid con bowl icónico. Popular entre la comunidad local de bowl riders.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline"
+    ],
+    "address": "Avenida de Daroca",
+    "city": "Madrid",
+    "country": "España",
+    "latitude": 40.4252,
+    "longitude": -3.6463,
+    "features": [
+      "Bowl clásico (2.8m)",
+      "Mini ramp",
+      "Quarter pipes",
+      "Small street section",
+      "Coping tradicional"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Intermedio-Avanzado",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.4,
+    "imageUrls": [
+      "https://placeholder.com/la-elipa-1.jpg"
+    ],
+    "tags": [
+      "bowl",
+      "classic",
+      "free",
+      "community"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-07T16:45:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce05"
+    },
+    "name": "Skatepark de Marxalenes",
+    "description": "Skatepark principal de Valencia. Excelente diseño de street plaza con múltiples obstáculos técnicos.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Calle de Sant Vicent Màrtir",
+    "city": "Valencia",
+    "country": "España",
+    "latitude": 39.4843,
+    "longitude": -0.3774,
+    "features": [
+      "Street plaza completa",
+      "Escaleras múltiples",
+      "Rails y ledges variados",
+      "Manual pads",
+      "Bank ramps",
+      "Zona técnica"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Intermedio",
+    "openHours": "08:00-22:00",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.5,
+    "imageUrls": [
+      "https://placeholder.com/marxalenes-1.jpg",
+      "https://placeholder.com/marxalenes-2.jpg"
+    ],
+    "tags": [
+      "street",
+      "technical",
+      "free",
+      "plaza"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-09T13:10:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce06"
+    },
+    "name": "Benimaclet Skatepark",
+    "description": "Skatepark comunitario en el barrio de Benimaclet. Perfecto para principiantes e intermedios.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Carrer de Dolores Marqués",
+    "city": "Valencia",
+    "country": "España",
+    "latitude": 39.4869,
+    "longitude": -0.3534,
+    "features": [
+      "Mini ramp (1m)",
+      "Small bowl",
+      "Street básico",
+      "Quarter pipes",
+      "Flat bars",
+      "Zona principiantes"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Principiante-Intermedio",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.2,
+    "imageUrls": [
+      "https://placeholder.com/benimaclet-1.jpg"
+    ],
+    "tags": [
+      "beginner friendly",
+      "community",
+      "free",
+      "neighborhood"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-08T09:30:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce07"
+    },
+    "name": "Skatepark de Nervión",
+    "description": "Skatepark moderno de Sevilla con excelente diseño flow. Popular para BMX y skateboard.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Avenida de Eduardo Dato",
+    "city": "Sevilla",
+    "country": "España",
+    "latitude": 37.3754,
+    "longitude": -5.9792,
+    "features": [
+      "Bowl flow (2m)",
+      "Street plaza moderna",
+      "Pump bumps",
+      "Spine ramp",
+      "Rails variados",
+      "Sombra natural"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Intermedio",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.6,
+    "imageUrls": [
+      "https://placeholder.com/nervion-1.jpg",
+      "https://placeholder.com/nervion-2.jpg"
+    ],
+    "tags": [
+      "bowl",
+      "flow",
+      "modern",
+      "free"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-10T10:15:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce08"
+    },
+    "name": "Skatepark El Morlaco",
+    "description": "Skatepark icónico de Málaga con bowl legendario y zona street. Ambiente increíble.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline"
+    ],
+    "address": "Avenida Velázquez",
+    "city": "Málaga",
+    "country": "España",
+    "latitude": 36.7196,
+    "longitude": -4.4214,
+    "features": [
+      "Bowl profundo (2.7m)",
+      "Street section",
+      "Vert wall",
+      "Hip ramp",
+      "Rails clásicos",
+      "Vistas al mar"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Avanzado",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.8,
+    "imageUrls": [
+      "https://placeholder.com/morlaco-1.jpg"
+    ],
+    "tags": [
+      "bowl",
+      "legendary",
+      "beach",
+      "free",
+      "iconic"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-09T17:25:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce09"
+    },
+    "name": "Skatepark de La Casilla",
+    "description": "Skatepark cubierto de Bilbao. Perfecto para días lluviosos. Diseño técnico de street.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Barrio de La Casilla",
+    "city": "Bilbao",
+    "country": "España",
+    "latitude": 43.2565,
+    "longitude": -2.9230,
+    "features": [
+      "Street plaza cubierta",
+      "Mini ramp indoor",
+      "Escaleras con handrails",
+      "Ledges técnicos",
+      "Manual pads",
+      "Protección climática"
+    ],
+    "surface": "Madera y hormigón",
+    "difficulty": "Intermedio-Avanzado",
+    "openHours": "10:00-22:00",
+    "isIndoor": true,
+    "isFree": false,
+    "entryFee": 5,
+    "currency": "EUR",
+    "rating": 4.7,
+    "imageUrls": [
+      "https://placeholder.com/la-casilla-1.jpg",
+      "https://placeholder.com/la-casilla-2.jpg"
+    ],
+    "tags": [
+      "indoor",
+      "covered",
+      "technical",
+      "street"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-10T14:40:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce10"
+    },
+    "name": "Skatepark de Armilla",
+    "description": "Skatepark de Granada con excelente bowl y zona street. Popular entre riders locales.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Calle Real",
+    "city": "Granada",
+    "country": "España",
+    "latitude": 37.1403,
+    "longitude": -3.6236,
+    "features": [
+      "Bowl mediano (2.2m)",
+      "Street plaza",
+      "Quarter pipes",
+      "Flat rails",
+      "Manual boxes",
+      "Vistas Sierra Nevada"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Intermedio",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.3,
+    "imageUrls": [
+      "https://placeholder.com/armilla-1.jpg"
+    ],
+    "tags": [
+      "bowl",
+      "street",
+      "mountain views",
+      "free"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-08T15:50:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce11"
+    },
+    "name": "Skatepark de San Juan",
+    "description": "Skatepark costero de Alicante. Bowl junto a la playa y zona street con vistas al mar.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Playa de San Juan",
+    "city": "Alicante",
+    "country": "España",
+    "latitude": 38.3965,
+    "longitude": -0.4302,
+    "features": [
+      "Bowl beachside (1.8m)",
+      "Street section",
+      "Mini ramp",
+      "Rails",
+      "Quarter pipes",
+      "Vista al Mediterráneo"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Todos los niveles",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.5,
+    "imageUrls": [
+      "https://placeholder.com/san-juan-1.jpg",
+      "https://placeholder.com/san-juan-2.jpg"
+    ],
+    "tags": [
+      "beach",
+      "bowl",
+      "street",
+      "free",
+      "sea views"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-09T11:35:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce12"
+    },
+    "name": "Skatepark de Valdespartera",
+    "description": "Skatepark moderno de Zaragoza con diseño flow. Excelente para todas las disciplinas.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Barrio Valdespartera",
+    "city": "Zaragoza",
+    "country": "España",
+    "latitude": 41.6191,
+    "longitude": -0.9319,
+    "features": [
+      "Bowl flow (2m)",
+      "Street plaza",
+      "Pump track",
+      "Spine transfer",
+      "Rails múltiples",
+      "Zona principiantes"
+    ],
+    "surface": "Hormigón",
+    "difficulty": "Todos los niveles",
+    "openHours": "24/7",
+    "isIndoor": false,
+    "isFree": true,
+    "rating": 4.4,
+    "imageUrls": [
+      "https://placeholder.com/valdespartera-1.jpg"
+    ],
+    "tags": [
+      "flow",
+      "modern",
+      "pump track",
+      "free",
+      "all levels"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-10T13:20:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce13"
+    },
+    "name": "Area 51 Skatepark",
+    "description": "One of Europe's largest indoor skateparks. Home to Winterclash. Massive wooden street course, bowl, and transition areas.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Klokgebouw 51",
+    "city": "Eindhoven",
+    "country": "Netherlands",
+    "latitude": 51.4416,
+    "longitude": 5.4697,
+    "features": [
+      "Giant indoor street course",
+      "Wooden bowl",
+      "Foam pit",
+      "Pro-shop",
+      "Canteen"
+    ],
+    "surface": "Wood",
+    "difficulty": "All Levels",
+    "openHours": "13:00-22:00",
+    "isIndoor": true,
+    "isFree": false,
+    "entryFee": 7.5,
+    "currency": "EUR",
+    "rating": 4.9,
+    "tags": [
+      "indoor",
+      "legendary",
+      "winterclash",
+      "wood"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "65c0002a1234567890abce14"
+    },
+    "name": "Banks of the Lez",
+    "description": "The iconic venue for FISE Montpellier. A massive custom-built urban sports complex set up annually along the river Lez.",
+    "disciplines": [
+      "skateboard",
+      "bmx",
+      "inline",
+      "scooter"
+    ],
+    "address": "Rives du Lez",
+    "city": "Montpellier",
+    "country": "France",
+    "latitude": 43.6108,
+    "longitude": 3.8767,
+    "features": [
+      "Pro Park Course",
+      "Spined Mini-ramp",
+      "Street course",
+      "Giant screens",
+      "Festival atmosphere"
+    ],
+    "surface": "Wood/Concrete",
+    "difficulty": "Advanced",
+    "openHours": "During Events",
+    "isIndoor": false,
+    "isFree": false,
+    "rating": 5.0,
+    "tags": [
+      "fise",
+      "festival",
+      "temporary",
+      "pro-level"
+    ],
+    "createdAt": {
+      "$date": "2025-01-01T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-01-12T10:00:00.000Z"
+    }
+  }
+]

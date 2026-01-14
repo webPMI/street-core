@@ -1,0 +1,65 @@
+version: '3.9'
+
+# ========================================
+# STREETCORE - Development Override
+# ========================================
+# Extensión de docker-compose.yml para desarrollo local
+# Uso: docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+# ========================================
+
+services:
+  # ========================================
+  # BACKEND - Development Mode
+  # ========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Mount source code for hot reload
+      - ./backend:/app:rw
+      # Mount go cache
+      - backend_go_cache:/go/pkg/mod
+    environment:
+      # Development overrides
+      ENV: development
+      LOG_LEVEL: debug
+      LOG_FORMAT: pretty
+      TESTING_MODE: "true"
+
+      # Allow CORS from localhost
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:8080,http://127.0.0.1:3000,http://127.0.0.1:8080
+
+      # Disable rate limiting for dev
+      RATE_LIMIT_ENABLED: "false"
+    command: |
+      sh -c "
+        echo 'Installing Air for hot reload...'
+        go install github.com/air-verse/air@latest
+        echo 'Starting backend with hot reload...'
+        air -c .air.toml
+      "
+
+  # ========================================
+  # FRONTEND - Development Mode
+  # ========================================
+  frontend:
+    build:
+      context: ./street_core
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Mount source code for hot reload
+      - ./street_core:/app:rw
+      # Exclude build directory
+      - /app/build
+    environment:
+      # Development overrides
+      ENVIRONMENT: development
+      API_URL: http://localhost:3000
+    command: flutter run -d web-server --web-hostname 0.0.0.0 --web-port 80
+    stdin_open: true
+    tty: true
+
+volumes:
+  backend_go_cache:
+    name: streetcore-go-cache-dev

@@ -1,0 +1,382 @@
+# Competitions Module - Agent Rules
+# Este archivo mantiene a los agentes enfocados en el módulo de competiciones.
+# LAST UPDATED: 2026-01-06 (v2 - Sistema de mensajes actualizado)
+
+## SCOPE - ALCANCE DEL MÓDULO
+
+Este módulo maneja:
+- Competiciones (CRUD, lifecycle, registro de atletas)
+- Categorías (gestión por competición)
+- Heats (generación, ejecución, puntuación)
+- Scores (puntuación de jueces, leaderboard)
+- Torneos (agrupación de competiciones)
+- Invitaciones de jueces
+- Sistema de seguridad (check-in, pause, unlock)
+- Emergencias (tie-break, freeze, rollback)
+
+## ARQUITECTURA - CLEAN ARCHITECTURE (HEXAGONAL)
+
+```
+competitions/
+├── domain/
+│   ├── entities/       # Entidades de dominio (Competition, Heat, Score, etc.)
+│   ├── repositories/   # Interfaces de repositorios (NO implementaciones)
+│   ├── models/         # Códigos de error y mensajes (heat_messages.go)
+│   └── errors/         # Errores de dominio genéricos
+├── application/
+│   ├── usecases/       # Casos de uso (1 archivo = 1 caso de uso)
+│   ├── usecases/emergency/  # Casos de uso de emergencia
+│   └── dto/            # DTOs de request/response
+├── infrastructure/
+│   ├── http/
+│   │   ├── handlers/   # HTTP handlers (Gin)
+│   │   ├── routes/     # Definición de rutas
+│   │   └── middlewares/ # Middlewares específicos del módulo
+│   └── persistence/
+│       └── mongodb/    # Implementaciones de repositorios
+├── ports/              # Interfaces para dependencias externas
+├── adapters/           # Adaptadores para puertos externos
+├── module.go           # Entry point - inicialización de dependencias
+└── register.go         # Registro del módulo en la aplicación
+```
+
+## REGLAS CRÍTICAS - MANDATORY RULES
+
+### 1. PARÁMETROS DE RUTA - USE `:id` NOT `:competitionId`
+```go
+// ✅ CORRECTO
+competitions.GET("/:id", handler.Get)
+competitions.GET("/:id/heats/:heatId", heatHandler.GetHeat)
+
+// ❌ INCORRECTO - CAUSA PANIC EN GIN
+competitions.GET("/:competitionId", handler.Get)  // NUNCA USAR
+```
+
+En handlers, usar `c.Param("id")` para competition ID:
+```go
+// ✅ CORRECTO
+competitionID := c.Param("id")
+
+// ❌ INCORRECTO
+competitionID := c.Param("competitionId")
+```
+
+### 2. RESPUESTAS HTTP - USE `pkg/response`
+```go
+// ✅ CORRECTO
+import "backend/pkg/response"
+
+response.OK(c, data)
+response.Created(c, data)
+response.BadRequest(c, "mensaje")
+response.NotFound(c, "recurso no encontrado")
+response.Unauthorized(c, "no autorizado")
+response.ErrorWithDetails(c, http.StatusConflict, "código", "mensaje", details)
+
+// ❌ INCORRECTO - NO EXISTE
+utils.ErrorJSON(c, http.StatusBadRequest, "mensaje")
+utils.SuccessJSON(c, data)
+```
+
+### 3. SISTEMA DE MENSAJES i18n - DOS NIVELES
+
+El backend tiene **DOS** archivos de mensajes que trabajan juntos:
+
+#### A) Mensajes GLOBALES - `backend/models/messages.go`
+Para operaciones comunes compartidas entre módulos:
+```go
+import "backend/models"
+
+// ✅ CORRECTO - Usar constantes globales para operaciones comunes
+models.CompetitionCreatedSuccessfully   // "competition.created.successfully"
+models.CompetitionNotFound              // "competition.not.found"
+models.CategoryNotFound                 // "category.not.found"
+models.ScoreSubmittedSuccessfully       // "score.submitted.successfully"
+models.Unauthorized                     // "unauthorized"
+models.PermissionDenied                 // "permission.denied"
+models.InvalidInput                     // "invalid.input"
+```
+
+#### B) Mensajes ESPECÍFICOS - `domain/models/heat_messages.go`
+Para operaciones específicas de heats, security y emergency:
+```go
+import "backend/features/competitions/domain/models"
+
+// ✅ CORRECTO - Usar constantes específicas del módulo
+models.ErrHeatNotFound           // "heat.not.found"
+models.ErrScoreLocked            // "score.locked"
+models.ErrCheckInNotAllReady     // "heat.checkin.not.all.ready"
+models.SuccessHeatCompleted      // "heat.completed"
+models.SuccessHeatsGenerated     // "heats.generated"
+
+// Para crear errores estructurados con detalles:
+models.NewHeatError(models.ErrHeatNotFound, "Heat not found")
+models.NewHeatError(models.ErrScoreLocked, "Score is locked").WithDetails("scoreId", id)
+```
+
+#### FORMATO DE CLAVES - OBLIGATORIO
+```
+palabra.palabra.palabra   // ✅ CORRECTO (puntos)
+palabra_palabra           // ❌ INCORRECTO (guiones bajos)
+palabra-palabra           // ❌ INCORRECTO (guiones)
+PALABRA_PALABRA           // ❌ INCORRECTO (mayúsculas)
+```
+
+#### CUÁNDO USAR CADA UNO
+| Operación | Archivo a usar |
+|-----------|----------------|
+| CRUD competiciones | `backend/models/messages.go` |
+| CRUD categorías | `backend/models/messages.go` |
+| Invitaciones jueces | `backend/models/messages.go` |
+| Heats (crear, completar, reset) | `domain/models/heat_messages.go` |
+| Security (check-in, pause, unlock) | `domain/models/heat_messages.go` |
+| Emergency (freeze, rollback, tie-break) | `domain/models/heat_messages.go` |
+
+### 4. CONSTRUCTORES DE USE CASES - VERIFICAR PARÁMETROS
+Antes de modificar un constructor, verificar su firma en el archivo original:
+```go
+// EJEMPLO - Verificar en create_heats.go:
+func NewCreateHeatsUseCase(
+    heatRepo repositories.HeatRepository,
+    roundRepo repositories.RoundRepository,
+    categoryRepo repositories.CategoryRepository,
+    competitionRepo repositories.CompetitionRepository,
+) *CreateHeatsUseCase
+
+// SIEMPRE actualizar module.go para coincidir con la firma
+```
+
+### 5. INTERFACES DE REPOSITORIO - AGREGAR EN `domain/repositories/`
+```go
+// ✅ CORRECTO - Agregar nuevo método a la interfaz
+// En domain/repositories/score_repository.go:
+type ScoreRepository interface {
+    FindByHeat(ctx context.Context, competitionID primitive.ObjectID, heatID string) ([]*entities.Score, error)
+}
+
+// Y luego implementar en infrastructure/persistence/mongodb/score_repository_impl.go
+```
+
+### 6. MIDDLEWARE DE AUTENTICACIÓN
+```go
+// ✅ CORRECTO
+middlewares.JWTAuthMiddleware(authService, tokenRevocationService, userRepo)
+
+// ❌ INCORRECTO - NO EXISTE
+middlewares.AuthMiddleware(...)
+```
+
+### 7. IMPORTACIONES - RUTAS COMPLETAS
+```go
+// ✅ CORRECTO
+import (
+    "backend/features/competitions/domain/entities"
+    "backend/features/competitions/domain/repositories"
+    "backend/features/competitions/application/usecases"
+    "backend/features/competitions/infrastructure/http/handlers"
+    "backend/pkg/response"
+    "backend/pkg/repository"
+)
+
+// ❌ INCORRECTO
+import "backend/utils"  // NO EXISTE
+```
+
+## FLUJO DE DEPENDENCIAS
+
+```
+Handler → UseCase → Repository (Interface)
+    ↓         ↓              ↓
+   Gin    Business      domain/repositories/
+           Logic              ↓
+                      infrastructure/persistence/mongodb/
+```
+
+**NUNCA** importar `infrastructure` desde `domain` o `application`.
+
+## ARCHIVOS CLAVE A CONOCER
+
+| Archivo | Propósito |
+|---------|-----------|
+| `module.go` | Inicialización de todas las dependencias |
+| `domain/models/heat_messages.go` | Mensajes i18n específicos (heats, security, emergency) |
+| `backend/models/messages.go` | Mensajes i18n GLOBALES (competition, category, score, etc.) |
+| `domain/errors/competition_errors.go` | Errores de dominio genéricos |
+| `infrastructure/http/routes/competition_routes.go` | Definición de rutas |
+| `ports/ports.go` | Interfaces para dependencias externas |
+
+## HANDLERS DISPONIBLES
+
+1. **CompetitionHandler** - CRUD de competiciones, lifecycle, scores
+2. **CategoryHandler** - Gestión de categorías
+3. **JudgeInvitationHandler** - Invitaciones de jueces
+4. **HeatHandler** - Generación y gestión de heats
+5. **TournamentHandler** - Gestión de torneos
+6. **SecurityHandler** - Check-in, pause, unlock
+7. **EmergencyHandler** - Crisis management (freeze, rollback, tie-break)
+
+## PATRONES DE RESPONSE
+
+### Éxito con mensaje global
+```go
+import globalModels "backend/models"
+
+c.JSON(http.StatusOK, gin.H{
+    "status":  "success",
+    "message": globalModels.CompetitionCreatedSuccessfully,  // "competition.created.successfully"
+    "data":    result,
+})
+```
+
+### Éxito con mensaje específico (heats)
+```go
+import "backend/features/competitions/domain/models"
+
+c.JSON(http.StatusOK, gin.H{
+    "status":  "success",
+    "message": models.SuccessHeatsGenerated,  // "heats.generated"
+    "data":    heats,
+})
+```
+
+### Error con código global
+```go
+import globalModels "backend/models"
+
+c.JSON(http.StatusNotFound, gin.H{
+    "status":  "error",
+    "code":    globalModels.CompetitionNotFound,  // "competition.not.found"
+    "message": "Competition not found",
+})
+```
+
+### Error con código específico (heats)
+```go
+import "backend/features/competitions/domain/models"
+
+c.JSON(statusCode, gin.H{
+    "status":  "error",
+    "code":    models.ErrHeatNotFound,  // "heat.not.found"
+    "message": "Heat not found",
+})
+```
+
+### Error estructurado con detalles
+```go
+// Cuando necesitas incluir información adicional
+heatErr := models.NewHeatError(models.ErrScoreLocked, "Score is locked")
+heatErr.WithDetails("scoreId", scoreID)
+heatErr.WithDetails("judgeId", judgeID)
+
+c.JSON(http.StatusConflict, gin.H{
+    "status":  "error",
+    "code":    heatErr.Code,
+    "message": heatErr.Message,
+    "details": heatErr.Details,
+})
+```
+
+## PROHIBICIONES - DO NOT
+
+1. **NO** crear nuevos archivos en `backend/utils/`
+2. **NO** usar `:competitionId` en rutas - usar `:id`
+3. **NO** importar handlers desde domain o application
+4. **NO** crear respuestas con mensajes hardcoded - usar constantes de `models/messages.go` o `domain/models/heat_messages.go`
+5. **NO** modificar `module.go` sin verificar firmas de constructores
+6. **NO** agregar métodos a repositorios sin actualizar la interfaz primero
+7. **NO** usar `log.Fatal` en handlers - retornar error apropiado
+8. **NO** usar formatos de clave incorrectos (guiones, guiones bajos, mayúsculas) - solo `palabra.palabra`
+9. **NO** inventar claves de mensajes nuevas sin agregarlas al archivo correspondiente
+10. **NO** duplicar claves que ya existen en `backend/models/messages.go`
+
+## CHECKLIST ANTES DE COMMIT
+
+- [ ] ¿Las rutas usan `:id` para competition ID?
+- [ ] ¿Los handlers usan `c.Param("id")`?
+- [ ] ¿Las respuestas usan `pkg/response`?
+- [ ] ¿Los mensajes de éxito/error usan constantes (no strings hardcoded)?
+- [ ] ¿Los códigos globales están en `backend/models/messages.go`?
+- [ ] ¿Los códigos específicos de heats están en `domain/models/heat_messages.go`?
+- [ ] ¿Las claves nuevas siguen el formato `palabra.palabra.palabra`?
+- [ ] ¿`module.go` coincide con las firmas de constructores?
+- [ ] ¿Las interfaces de repositorio están actualizadas?
+- [ ] ¿El código compila con `go build ./...`?
+
+## TESTING
+
+```bash
+# Compilar módulo
+cd backend && go build ./...
+
+# Ejecutar tests del módulo
+go test ./features/competitions/...
+
+# Ejecutar tests específicos
+go test ./features/competitions/application/usecases/...
+```
+
+## REFERENCIA RÁPIDA - MENSAJES DISPONIBLES
+
+### Mensajes GLOBALES más usados (`backend/models/messages.go`)
+```go
+// Success
+CompetitionCreatedSuccessfully      // "competition.created.successfully"
+CompetitionUpdatedSuccessfully      // "competition.updated.successfully"
+CompetitionDeletedSuccessfully      // "competition.deleted.successfully"
+CompetitionStartedSuccessfully      // "competition.started.successfully"
+CompetitionEndedSuccessfully        // "competition.ended.successfully"
+CompetitionRegisteredSuccessfully   // "competition.registered.successfully"
+ScoreSubmittedSuccessfully          // "score.submitted.successfully"
+CategoryCreatedSuccessfully         // "category.created.successfully"
+JudgeInvitedSuccessfully            // "judge.invited.successfully"
+InvitationAcceptedSuccessfully      // "invitation.accepted.successfully"
+ResultsPublishedSuccessfully        // "results.published.successfully"
+
+// Errors
+CompetitionNotFound                 // "competition.not.found"
+CategoryNotFound                    // "category.not.found"
+ScoreNotFound                       // "score.not.found"
+InvitationNotFound                  // "invitation.not.found"
+Unauthorized                        // "unauthorized"
+PermissionDenied                    // "permission.denied"
+AlreadyRegistered                   // "already.registered"
+RegistrationClosed                  // "registration.closed"
+MaxParticipantsReached              // "max.participants.reached"
+InvalidInput                        // "invalid.input"
+InvalidID                           // "invalid.id"
+```
+
+### Mensajes ESPECÍFICOS más usados (`domain/models/heat_messages.go`)
+```go
+// Success
+SuccessHeatCreated                  // "heat.created"
+SuccessHeatCompleted                // "heat.completed"
+SuccessHeatsGenerated               // "heats.generated"
+SuccessHeatsReset                   // "heats.reset"
+SuccessCheckedIn                    // "heat.checked.in"
+SuccessHeatPaused                   // "heat.paused"
+SuccessHeatResumed                  // "heat.resumed"
+SuccessScoreUnlockAuthorized        // "score.unlock.authorized"
+SuccessTieBreakResolved             // "heat.emergency.tiebreak.resolved"
+SuccessHeatFrozen                   // "heat.emergency.frozen"
+
+// Errors
+ErrHeatNotFound                     // "heat.not.found"
+ErrRoundNotFound                    // "round.not.found"
+ErrHeatAlreadyClosed                // "heat.already.closed"
+ErrScoreLocked                      // "score.locked"
+ErrCheckInNotAllReady               // "heat.checkin.not.all.ready"
+ErrHeatAlreadyPaused                // "heat.already.paused"
+ErrHeatNotPaused                    // "heat.not.paused"
+ErrScoreUnlockExpired               // "score.unlock.expired"
+ErrHeatAlreadyFrozen                // "heat.emergency.already.frozen"
+ErrRollbackNoHistory                // "heat.emergency.rollback.no.history"
+```
+
+## CONTEXTO ADICIONAL
+
+- Este módulo sigue Clean Architecture (Hexagonal)
+- Los otros módulos (auth, clubs, events) usan estructura Flat
+- Ver `CLAUDE.md` en la raíz del proyecto para contexto global
+- Ver `docs/architecture/adr/ADR-005` para decisión arquitectónica
+- El frontend (Flutter) traduce automáticamente estas claves con `LocaleCubit`

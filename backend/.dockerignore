@@ -1,0 +1,68 @@
+# ========================================
+# BACKEND - Docker Ignore
+# ========================================
+# Archivos a excluir del contexto de Docker build
+# para optimizar tamaño y velocidad
+# ========================================
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README.md
+CHANGELOG.md
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+*_test.go
+**/*_test.go
+tests/
+test/
+coverage.txt
+coverage.out
+*.test
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+build/
+dist/
+tmp/
+
+# Runtime data
+logs/
+*.log
+uploads/
+backups/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.beta
+.env.production
+
+# Dependencies
+vendor/
+
+# Documentation
+docs/

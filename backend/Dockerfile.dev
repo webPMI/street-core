@@ -1,0 +1,32 @@
+# ========================================
+# STREETCORE BACKEND - Development
+# ========================================
+# Dockerfile para desarrollo con hot reload
+# ========================================
+
+FROM golang:1.24-alpine
+
+# Instalar dependencias
+RUN apk add --no-cache git ca-certificates tzdata
+
+# Instalar Air para hot reload (versión compatible con Go 1.24)
+RUN go install github.com/air-verse/air@v1.61.7
+
+# Crear directorio de trabajo
+WORKDIR /app
+
+# Copiar go.mod y go.sum
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copiar código fuente (será montado como volumen)
+COPY . .
+
+# Crear directorios necesarios
+RUN mkdir -p /app/uploads /app/logs
+
+# Exponer puerto
+EXPOSE 3000
+
+# Comando por defecto (puede ser sobreescrito)
+CMD ["air", "-c", ".air.toml"]

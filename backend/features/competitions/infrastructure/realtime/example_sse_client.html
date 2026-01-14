@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Dashboard - Real-Time Events (BLOQUE 3)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .event {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            background: #ecf0f1;
+        }
+        .event.emergency {
+            border-left-color: #e74c3c;
+            background: #fadbd8;
+        }
+        .event.score_reset {
+            border-left-color: #e67e22;
+            background: #ffeaa7;
+        }
+        .event.score_swap {
+            border-left-color: #9b59b6;
+            background: #e8daef;
+        }
+        .event.score_override {
+            border-left-color: #f39c12;
+            background: #fdebd0;
+        }
+        .event-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .priority {
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .priority.CRITICAL {
+            background: #e74c3c;
+            color: white;
+        }
+        .priority.WARNING {
+            background: #f39c12;
+            color: white;
+        }
+        .priority.INFO {
+            background: #3498db;
+            color: white;
+        }
+        .event-data {
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .timestamp {
+            color: #7f8c8d;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        button.disconnect {
+            background: #e74c3c;
+        }
+        button.disconnect:hover {
+            background: #c0392b;
+        }
+        .config {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            flex: 1;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .stat-card {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎙️ Speaker Dashboard - Real-Time Events</h1>
+
+    <div class="container">
+        <h2>📡 SSE Connection</h2>
+        <div class="config">
+            <label>Competition ID:</label>
+            <input type="text" id="competitionId" placeholder="673d1f2e8b5c4a1d2e3f4a5b">
+            <button onclick="connect()">Connect</button>
+            <button class="disconnect" onclick="disconnect()">Disconnect</button>
+        </div>
+        <div id="status" class="status disconnected">🔴 Disconnected</div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="eventCount">0</div>
+                <div class="stat-label">Total Events</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="emergencyCount">0</div>
+                <div class="stat-label">Emergency Alerts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="scoreResetCount">0</div>
+                <div class="stat-label">Score Resets</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="scoreSwapCount">0</div>
+                <div class="stat-label">Score Swaps</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>📋 Event Log</h2>
+        <button onclick="clearLog()">Clear Log</button>
+        <div id="eventLog"></div>
+    </div>
+
+    <script>
+        let eventSource = null;
+        let eventCount = 0;
+        let emergencyCount = 0;
+        let scoreResetCount = 0;
+        let scoreSwapCount = 0;
+
+        function connect() {
+            const competitionId = document.getElementById('competitionId').value.trim();
+            if (!competitionId) {
+                alert('Please enter a competition ID');
+                return;
+            }
+
+            // Close existing connection
+            if (eventSource) {
+                eventSource.close();
+            }
+
+            // Establish new SSE connection
+            const url = `http://localhost:3000/api/v1/competitions/${competitionId}/events`;
+            console.log('Connecting to:', url);
+
+            eventSource = new EventSource(url);
+
+            // Connection opened
+            eventSource.addEventListener('connected', (event) => {
+                console.log('✅ Connected:', event.data);
+                const data = JSON.parse(event.data);
+                updateStatus('connected', `✅ Connected to competition ${data.competitionId}`);
+                logEvent('connected', 'INFO', 'Connection established', data);
+            });
+
+            // Emergency broadcasts (CRITICAL priority)
+            eventSource.addEventListener('emergency', (event) => {
+                console.log('🚨 EMERGENCY:', event.data);
+                const data = JSON.parse(event.data);
+                emergencyCount++;
+                updateStats();
+
+                // Show alert for critical emergencies
+                if (data.priority === 'CRITICAL') {
+                    showAlert(data.message);
+                }
+
+                logEvent('emergency', data.priority, data.message, data);
+            });
+
+            // Score reset (athlete re-run authorized)
+            eventSource.addEventListener('score_reset', (event) => {
+                console.log('🔄 Score Reset:', event.data);
+                const data = JSON.parse(event.data);
+                scoreResetCount++;
+                updateStats();
+
+                logEvent('score_reset', data.priority, data.message, data);
+
+                // Update UI: refresh athlete scores for this heat
+                refreshAthleteScores(data.heatId, data.data.athleteId);
+            });
+
+            // Score swap (scores swapped between athletes)
+            eventSource.addEventListener('score_swap', (event) => {
+                console.log('🔀 Score Swap:', event.data);
+                const data = JSON.parse(event.data);
+                scoreSwapCount++;
+                updateStats();
+
+                logEvent('score_swap', data.priority, data.message, data);
+
+                // Update UI: refresh both athletes
+                refreshAthleteScores(data.heatId, data.data.athlete1Id);
+                refreshAthleteScores(data.heatId, data.data.athlete2Id);
+            });
+
+            // Score override (admin manual entry)
+            eventSource.addEventListener('score_override', (event) => {
+                console.log('✏️ Score Override:', event.data);
+                const data = JSON.parse(event.data);
+
+                logEvent('score_override', data.priority, data.message, data);
+
+                // Update UI: refresh athlete score display
+                refreshAthleteScores(data.heatId, data.data.athleteId);
+            });
+
+            // Score under review (protest filed)
+            eventSource.addEventListener('score_under_review', (event) => {
+                console.log('⚠️ Score Under Review:', event.data);
+                const data = JSON.parse(event.data);
+
+                logEvent('score_under_review', data.priority, data.message, data);
+
+                // Update UI: mark score as under review
+                markScoreUnderReview(data.data.scoreId);
+            });
+
+            // Heat order change
+            eventSource.addEventListener('heat_order_change', (event) => {
+                console.log('📝 Heat Order Changed:', event.data);
+                const data = JSON.parse(event.data);
+
+                logEvent('heat_order_change', data.priority, data.message, data);
+
+                // Update UI: reload heat order
+                reloadHeatOrder(data.heatId, data.data.newOrder);
+            });
+
+            // Athlete removed from heat
+            eventSource.addEventListener('athlete_removed', (event) => {
+                console.log('❌ Athlete Removed:', event.data);
+                const data = JSON.parse(event.data);
+
+                logEvent('athlete_removed', data.priority, data.message, data);
+
+                // Update UI: remove athlete from heat display
+                removeAthleteFromHeat(data.heatId, data.data.athleteId);
+            });
+
+            // Error handling
+            eventSource.onerror = (error) => {
+                console.error('❌ SSE Error:', error);
+                updateStatus('disconnected', '🔴 Connection error - Retrying...');
+            };
+        }
+
+        function disconnect() {
+            if (eventSource) {
+                eventSource.close();
+                eventSource = null;
+                updateStatus('disconnected', '🔴 Disconnected');
+                console.log('Disconnected from SSE');
+            }
+        }
+
+        function updateStatus(status, message) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.className = `status ${status}`;
+            statusDiv.textContent = message;
+        }
+
+        function updateStats() {
+            eventCount++;
+            document.getElementById('eventCount').textContent = eventCount;
+            document.getElementById('emergencyCount').textContent = emergencyCount;
+            document.getElementById('scoreResetCount').textContent = scoreResetCount;
+            document.getElementById('scoreSwapCount').textContent = scoreSwapCount;
+        }
+
+        function logEvent(type, priority, message, data) {
+            const log = document.getElementById('eventLog');
+            const eventDiv = document.createElement('div');
+            eventDiv.className = `event ${type}`;
+
+            const now = new Date().toLocaleTimeString();
+
+            eventDiv.innerHTML = `
+                <div class="event-header">
+                    <span>${getEventIcon(type)} ${type.replace('_', ' ').toUpperCase()}</span>
+                    <span class="priority ${priority}">${priority}</span>
+                </div>
+                <div>${message}</div>
+                <div class="event-data">${JSON.stringify(data, null, 2)}</div>
+                <div class="timestamp">${now}</div>
+            `;
+
+            log.insertBefore(eventDiv, log.firstChild);
+
+            // Keep only last 50 events
+            while (log.children.length > 50) {
+                log.removeChild(log.lastChild);
+            }
+        }
+
+        function getEventIcon(type) {
+            const icons = {
+                'connected': '✅',
+                'emergency': '🚨',
+                'score_reset': '🔄',
+                'score_swap': '🔀',
+                'score_override': '✏️',
+                'score_under_review': '⚠️',
+                'heat_order_change': '📝',
+                'athlete_removed': '❌'
+            };
+            return icons[type] || '📢';
+        }
+
+        function showAlert(message) {
+            alert(`🚨 EMERGENCY ALERT\n\n${message}`);
+        }
+
+        function clearLog() {
+            document.getElementById('eventLog').innerHTML = '';
+            eventCount = 0;
+            emergencyCount = 0;
+            scoreResetCount = 0;
+            scoreSwapCount = 0;
+            updateStats();
+        }
+
+        // ============================================================================
+        // UI UPDATE FUNCTIONS (to be implemented in your real Speaker dashboard)
+        // ============================================================================
+
+        function refreshAthleteScores(heatId, athleteId) {
+            console.log(`🔄 Refreshing scores for athlete ${athleteId} in heat ${heatId}`);
+            // TODO: Call your API to fetch fresh scores
+            // Example: fetch(`/api/v1/heats/${heatId}/athletes/${athleteId}/scores`)
+            //   .then(res => res.json())
+            //   .then(scores => updateScoreDisplay(athleteId, scores))
+        }
+
+        function markScoreUnderReview(scoreId) {
+            console.log(`⚠️ Marking score ${scoreId} as under review`);
+            // TODO: Update UI to show "UNDER REVIEW" badge
+        }
+
+        function reloadHeatOrder(heatId, newOrder) {
+            console.log(`📝 Reloading heat order for heat ${heatId}:`, newOrder);
+            // TODO: Reorder athletes in UI based on newOrder array
+        }
+
+        function removeAthleteFromHeat(heatId, athleteId) {
+            console.log(`❌ Removing athlete ${athleteId} from heat ${heatId}`);
+            // TODO: Remove athlete from heat display
+        }
+
+        // Auto-connect on page load (for testing)
+        window.onload = () => {
+            // Set default competition ID for testing
+            document.getElementById('competitionId').value = '673d1f2e8b5c4a1d2e3f4a5b';
+        };
+    </script>
+</body>
+</html>

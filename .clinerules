@@ -1,0 +1,56 @@
+# Claude Code - Project Rules
+
+## Global Rules
+
+- Always follow the architecture patterns defined in `CLAUDE.md`
+- Respect the Monolith by Features structure
+- Use appropriate agents for complex tasks
+
+## Feature-Specific Rules
+
+### Competitions Module
+
+**CRITICAL**: Always check `/backend/features/competitions/README.md` before modifying any competition use case or handler to ensure compliance with the Vertical Slicing and Emergency Audit patterns.
+
+**Key Requirements**:
+- Emergency use cases MUST follow the 11-step transaction pattern
+- ALL emergency endpoints require JWT authentication + EmergencyAuthorizationService authorization
+- NO hard deletes - use soft delete with status updates
+- SSE broadcasts MUST be called after successful transaction commit
+- Score overrides MUST preserve OriginalJudgeScore for protests
+- Audit trail (StateBefore/StateAfter) MUST be created for all emergency actions
+
+**Before modifying**:
+1. Read `backend/features/competitions/README.md` for architecture rules
+2. Verify dependency direction (Infrastructure → Application → Domain)
+3. Check authorization matrix for role permissions
+4. Review SSE event types and payloads
+5. Ensure data integrity rules are followed
+
+### Other Modules
+
+- Auth: Follow JWT token rotation pattern (15min access, 7 day refresh)
+- Profile: Follow flat structure for simple features
+- Market: Use hexagonal architecture for complex features
+
+## Testing Requirements
+
+- Unit tests for domain logic (entities, services)
+- Integration tests for use cases (with MongoDB transactions)
+- E2E tests for handlers (with JWT authentication)
+- Emergency operations MUST have rollback tests
+
+## Security Checklist
+
+- [ ] All endpoints protected by AuthMiddleware
+- [ ] Role-based authorization implemented
+- [ ] Input validation on all DTOs
+- [ ] No sensitive data in error messages
+- [ ] Audit trail for critical operations
+
+## Documentation
+
+- Update module README when adding new features
+- Document breaking changes
+- Add JSDoc/comments for complex logic
+- Keep API documentation in sync
