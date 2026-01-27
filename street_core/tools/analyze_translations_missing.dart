@@ -1,9 +1,9 @@
+// ignore_for_file: avoid_print
 import 'dart:io';
 
 void main() {
   print('🔍 Analizando claves de traducción Vs LocaleKeys...\n');
 
-  final root = Directory.current.path;
   final localeFile = File('lib/core/lang/locale_keys.dart');
   if (!localeFile.existsSync()) {
     print('No se encontró locale_keys.dart');
@@ -47,14 +47,18 @@ void main() {
     'Missing keys (present in LocaleKeys but NOT translated): ${missing.length}',
   );
   if (missing.isNotEmpty) {
-    for (var k in missing) print('  - $k');
+    for (var k in missing) {
+      print('  - $k');
+    }
   }
 
   print(
     '\nExtra translation keys (present in es but not in LocaleKeys): ${unused.length}',
   );
   if (unused.isNotEmpty) {
-    for (var k in unused) print('  - ${k} (in ${translationKeys[k]})');
+    for (var k in unused) {
+      print('  - $k (in ${translationKeys[k]})');
+    }
   }
 
   // Show per-file counts

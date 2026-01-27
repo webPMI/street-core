@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'dart:convert';
 import 'dart:io';
 
@@ -6,7 +7,8 @@ import 'dart:io';
 // lib/core/lang/translations/es/auto_translated/<original_filename>
 // Usage: dart tools/auto_translate_es.dart
 
-final _apiBase = Platform.environment['LIBRETRANSLATE_URL'] ?? 'https://libretranslate.com';
+final _apiBase =
+    Platform.environment['LIBRETRANSLATE_URL'] ?? 'https://libretranslate.com';
 
 Future<void> main() async {
   final translationsDir = Directory('lib/core/lang/translations/es');
@@ -59,8 +61,8 @@ Future<void> main() async {
       restored = restored.replaceAll("'", "\\'");
 
       // Replace the exact match in the file content
-      final originalLiteral = "'${key}': '${value}',";
-      final newLiteral = "'${key}': '${restored}',";
+      final originalLiteral = "'$key': '$value',";
+      final newLiteral = "'$key': '$restored',";
       if (modified.contains(originalLiteral)) {
         modified = modified.replaceFirst(originalLiteral, newLiteral);
         changed++;
@@ -82,12 +84,33 @@ Future<void> main() async {
 
   final reportFile = File('tools/auto_translate_report.txt');
   reportFile.writeAsStringSync(report.join('\n'));
-  print('\nReporte generado en tools/auto_translate_report.txt con ${report.length} entradas.');
+  print(
+    '\nReporte generado en tools/auto_translate_report.txt con ${report.length} entradas.',
+  );
 }
 
 bool looksLikeSpanish(String s) {
   final spanishWords = [
-    'el', 'la', 'los', 'las', 'que', 'para', 'por', 'con', 'sin', 'y', 'o', 'muy', 'por', 'Hola', 'Hola', 'Página', 'Fecha', 'Mostrar', 'Ocultar', 'Cargando'
+    'el',
+    'la',
+    'los',
+    'las',
+    'que',
+    'para',
+    'por',
+    'con',
+    'sin',
+    'y',
+    'o',
+    'muy',
+    'por',
+    'Hola',
+    'Hola',
+    'Página',
+    'Fecha',
+    'Mostrar',
+    'Ocultar',
+    'Cargando',
   ];
   final lower = s.toLowerCase();
   for (var w in spanishWords) {
@@ -121,7 +144,10 @@ Future<DetectionResult?> detectLanguage(String text) async {
       final data = jsonDecode(body);
       if (data is List && data.isNotEmpty) {
         final top = data[0];
-        return DetectionResult(top['language'] as String, (top['confidence'] as num).toDouble());
+        return DetectionResult(
+          top['language'] as String,
+          (top['confidence'] as num).toDouble(),
+        );
       }
     }
   } catch (e) {
@@ -133,7 +159,12 @@ Future<DetectionResult?> detectLanguage(String text) async {
 Future<String> translateText(String text, String source, String target) async {
   try {
     final uri = Uri.parse('$_apiBase/translate');
-    final payload = jsonEncode({'q': text, 'source': source, 'target': target, 'format': 'text'});
+    final payload = jsonEncode({
+      'q': text,
+      'source': source,
+      'target': target,
+      'format': 'text',
+    });
 
     final httpClient = HttpClient();
     final request = await httpClient.postUrl(uri);

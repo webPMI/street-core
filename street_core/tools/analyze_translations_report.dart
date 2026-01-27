@@ -1,3 +1,4 @@
+// ignore_for_file: avoid_print
 import 'dart:io';
 
 void main() {
@@ -17,11 +18,14 @@ void main() {
   }
 
   final translationsDir = Directory('lib/core/lang/translations/es');
-  final files = translationsDir.listSync().whereType<File>().where((f) => f.path.endsWith('.dart')).toList();
+  final files = translationsDir
+      .listSync()
+      .whereType<File>()
+      .where((f) => f.path.endsWith('.dart'))
+      .toList();
 
   final translationKeys = <String, String>{}; // key -> file
-  final regex = RegExp(r"'([^']+)':\s*'([\s\S]*?)',",
-      multiLine: true);
+  final regex = RegExp(r"'([^']+)':\s*'([\s\S]*?)',", multiLine: true);
 
   for (var file in files) {
     final content = file.readAsStringSync();
@@ -30,8 +34,11 @@ void main() {
     }
   }
 
-  final missing = localeKeys.where((k) => !translationKeys.containsKey(k)).toList()..sort();
-  final unused = translationKeys.keys.where((k) => !localeKeys.contains(k)).toList()..sort();
+  final missing =
+      localeKeys.where((k) => !translationKeys.containsKey(k)).toList()..sort();
+  final unused =
+      translationKeys.keys.where((k) => !localeKeys.contains(k)).toList()
+        ..sort();
 
   // Write missing keys to a file to help manual sync
   final missingFile = File('tools/missing_locale_keys.txt');
@@ -40,16 +47,24 @@ void main() {
   print('\n📌 Resumen corto:');
   print('  - Total keys in LocaleKeys: ${localeKeys.length}');
   print('  - Total keys in Spanish translations: ${translationKeys.length}');
-  print('  - Missing keys (in LocaleKeys but NOT translated): ${missing.length}');
-  print('  - Extra translation keys (in es but not in LocaleKeys): ${unused.length}');
+  print(
+    '  - Missing keys (in LocaleKeys but NOT translated): ${missing.length}',
+  );
+  print(
+    '  - Extra translation keys (in es but not in LocaleKeys): ${unused.length}',
+  );
 
   if (missing.isNotEmpty) {
-    print('\n📝 Se han guardado las claves faltantes en tools/missing_locale_keys.txt');
+    print(
+      '\n📝 Se han guardado las claves faltantes en tools/missing_locale_keys.txt',
+    );
   }
 
   if (unused.isNotEmpty) {
     print('\n📌 Ejemplos de claves extra (primeros 50):');
-    for (var k in unused.take(50)) print('   - ${k} (en ${translationKeys[k]})');
+    for (var k in unused.take(50)) {
+      print('   - $k (en ${translationKeys[k]})');
+    }
     if (unused.length > 50) print('   ... (${unused.length - 50} más)');
   }
 
@@ -63,5 +78,7 @@ void main() {
     print('   - $fileName: $count claves');
   }
 
-  print('\n✅ Análisis completado. Próximo paso sugerido: revisar tools/missing_locale_keys.txt y decidir si añadimos las claves a locale_keys.dart o eliminamos claves de traducciones no usadas.');
+  print(
+    '\n✅ Análisis completado. Próximo paso sugerido: revisar tools/missing_locale_keys.txt y decidir si añadimos las claves a locale_keys.dart o eliminamos claves de traducciones no usadas.',
+  );
 }
