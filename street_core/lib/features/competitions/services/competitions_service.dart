@@ -3,6 +3,7 @@ import '../../../core/services/api_service.dart';
 import '../../../data/models/paginated_result.dart';
 import '../competitions_uris.dart';
 import '../models/competition.dart';
+import '../models/competition_category_model.dart';
 import '../models/judge_check_in.dart';
 
 /// Consolidated service for competitions feature.
@@ -408,6 +409,37 @@ class CompetitionsService {
     }
 
     throw Exception(response.message);
+  }
+
+  // ===========================================================================
+  // CATEGORIES
+  // ===========================================================================
+
+  /// Get categories for a competition (public endpoint)
+  Future<List<CompetitionCategory>> getCategories(String competitionId) async {
+    AppLogger.info('Fetching categories for competition: $competitionId');
+
+    final response = await _apiService.useFetch<List<dynamic>>(
+      CompetitionsUris.categories(competitionId),
+      method: 'GET',
+      requiredToken: false,
+      fromJsonT: (data) => data as List<dynamic>,
+    );
+
+    if (response.status == 'success' && response.data != null) {
+      return response.data!
+          .map((e) => CompetitionCategory.fromJson(e as Map<String, dynamic>))
+          .toList();
+    }
+
+    final errorMessage = response.message.isNotEmpty
+        ? response.message
+        : 'Error fetching categories';
+    AppLogger.error(
+      'Failed to fetch categories (competitionId: $competitionId, statusCode: ${response.statusCode}, message: $errorMessage)',
+      tag: 'CompetitionsService',
+    );
+    throw Exception(errorMessage);
   }
 
   // ===========================================================================
