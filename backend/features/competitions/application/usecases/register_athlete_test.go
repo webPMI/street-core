@@ -90,7 +90,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("success - register athlete", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createTestCompetition()
 		competitionID := competition.ID.Hex()
@@ -117,7 +117,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - invalid competition ID", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		// Execute with invalid ID
 		err := useCase.Execute(context.Background(), "invalid-id", testAthleteID.Hex(), testOrganizerID, "user")
@@ -132,7 +132,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - invalid athlete ID", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competitionID := primitive.NewObjectID().Hex()
 
@@ -149,7 +149,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - competition not found", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competitionID := primitive.NewObjectID()
 		athleteID := testAthleteID.Hex()
@@ -171,7 +171,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - registration closed", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createClosedCompetition()
 		competitionID := competition.ID.Hex()
@@ -195,7 +195,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - already registered", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createTestCompetition()
 		competition.AddAthlete(testAthleteID) // Pre-register athlete
@@ -221,7 +221,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - max participants reached", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createFullCompetition()
 		competitionID := competition.ID.Hex()
@@ -245,7 +245,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - competition already started", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createStartedCompetition()
 		competitionID := competition.ID.Hex()
@@ -269,7 +269,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("failure - database update error", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createTestCompetition()
 		competitionID := competition.ID.Hex()
@@ -295,7 +295,7 @@ func TestRegisterAthlete(t *testing.T) {
 	t.Run("success - multiple athletes can register", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createTestCompetition()
 		competitionID := competition.ID.Hex()
@@ -335,7 +335,7 @@ func TestUnregisterAthlete(t *testing.T) {
 	t.Run("success - unregister athlete", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createTestCompetition()
 		competition.AddAthlete(testAthleteID) // Pre-register athlete
@@ -363,7 +363,7 @@ func TestUnregisterAthlete(t *testing.T) {
 	t.Run("failure - athlete not registered", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		competition := createTestCompetition()
 		competitionID := competition.ID.Hex()
@@ -387,7 +387,7 @@ func TestUnregisterAthlete(t *testing.T) {
 	t.Run("failure - cannot unregister after competition started", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		// Create competition and register athlete BEFORE it starts
 		competition := createTestCompetition()
@@ -415,7 +415,7 @@ func TestUnregisterAthlete(t *testing.T) {
 	t.Run("failure - invalid competition ID", func(t *testing.T) {
 		// Setup
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewRegisterAthleteUseCase(mockRepo)
+		useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 		// Execute
 		err := useCase.Unregister(context.Background(), "invalid-id", testAthleteID.Hex(), testOrganizerID, "user")
@@ -434,7 +434,7 @@ func TestUnregisterAthlete(t *testing.T) {
 
 func BenchmarkRegisterAthlete(b *testing.B) {
 	mockRepo := new(MockCompetitionRepository)
-	useCase := NewRegisterAthleteUseCase(mockRepo)
+	useCase := NewRegisterAthleteUseCase(mockRepo, nil)
 
 	competition := createTestCompetition()
 	competitionID := competition.ID.Hex()

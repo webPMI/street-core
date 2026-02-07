@@ -920,7 +920,7 @@ func TestSearchCompetitions_ExecuteNearby(t *testing.T) {
 func TestStartCompetition(t *testing.T) {
 	t.Run("success - owner starts competition", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		organizerID := primitive.NewObjectID()
 		competition := createTestCompetitionWithOrganizer(organizerID)
@@ -941,7 +941,7 @@ func TestStartCompetition(t *testing.T) {
 
 	t.Run("success - admin starts competition", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		organizerID := primitive.NewObjectID()
 		adminID := primitive.NewObjectID()
@@ -962,7 +962,7 @@ func TestStartCompetition(t *testing.T) {
 
 	t.Run("failure - invalid competition ID", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		result, err := useCase.Execute(context.Background(), "invalid-id", primitive.NewObjectID(), "admin")
 
@@ -973,7 +973,7 @@ func TestStartCompetition(t *testing.T) {
 
 	t.Run("failure - competition not found", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		competitionID := primitive.NewObjectID()
 		mockRepo.On("FindByID", mock.Anything, competitionID).Return(nil, errors.New("not found"))
@@ -987,7 +987,7 @@ func TestStartCompetition(t *testing.T) {
 
 	t.Run("failure - not owner and not admin", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		organizerID := primitive.NewObjectID()
 		otherUserID := primitive.NewObjectID()
@@ -1005,7 +1005,7 @@ func TestStartCompetition(t *testing.T) {
 
 	t.Run("failure - competition not upcoming", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		organizerID := primitive.NewObjectID()
 		competition := createTestCompetitionWithOrganizer(organizerID)
@@ -1022,7 +1022,7 @@ func TestStartCompetition(t *testing.T) {
 
 	t.Run("failure - insufficient participants", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		organizerID := primitive.NewObjectID()
 		competition := createTestCompetitionWithOrganizer(organizerID)
@@ -1041,7 +1041,7 @@ func TestStartCompetition(t *testing.T) {
 
 	t.Run("failure - database error on update", func(t *testing.T) {
 		mockRepo := new(MockCompetitionRepository)
-		useCase := NewStartCompetitionUseCase(mockRepo)
+		useCase := NewStartCompetitionUseCase(mockRepo, nil, nil)
 
 		organizerID := primitive.NewObjectID()
 		competition := createTestCompetitionWithOrganizer(organizerID)
