@@ -3,6 +3,7 @@ package profile
 import (
 	"net/http"
 
+	"backend/middlewares"
 	"backend/pkg/pagination"
 	"backend/utils"
 
@@ -125,7 +126,17 @@ func (h *followHandler) UnfollowUser(c *gin.Context) {
 func (h *followHandler) GetFollowers(c *gin.Context) {
 	userID := c.Param("id")
 
-	params := pagination.ParseParams(c)
+	paginationParams, err := middlewares.ParsePagination(c)
+	if err != nil {
+		return // Response already sent
+	}
+
+	// Convert to service params format
+	params := &pagination.Params{
+		Page:  paginationParams.Page,
+		Limit: paginationParams.Limit,
+		Skip:  paginationParams.Offset,
+	}
 
 	followers, total, err := h.followService.GetFollowers(userID, params)
 	if err != nil {
@@ -147,7 +158,17 @@ func (h *followHandler) GetFollowers(c *gin.Context) {
 func (h *followHandler) GetFollowing(c *gin.Context) {
 	userID := c.Param("id")
 
-	params := pagination.ParseParams(c)
+	paginationParams, err := middlewares.ParsePagination(c)
+	if err != nil {
+		return // Response already sent
+	}
+
+	// Convert to service params format
+	params := &pagination.Params{
+		Page:  paginationParams.Page,
+		Limit: paginationParams.Limit,
+		Skip:  paginationParams.Offset,
+	}
 
 	following, total, err := h.followService.GetFollowing(userID, params)
 	if err != nil {

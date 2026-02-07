@@ -147,7 +147,17 @@ func (h *PostHandler) GetAllPosts(c *gin.Context) {
 	utils.Info("Getting all posts with pagination", nil)
 
 	// Parse pagination parameters with defaults
-	params := pagination.ParseParams(c)
+	paginationParams, err := middlewares.ParsePagination(c)
+	if err != nil {
+		return // Response already sent
+	}
+
+	// Convert to service params format
+	params := &pagination.Params{
+		Page:  paginationParams.Page,
+		Limit: paginationParams.Limit,
+		Skip:  paginationParams.Offset,
+	}
 
 	// Parse filters
 	filters := parsePostFilters(c)
@@ -222,7 +232,17 @@ func (h *PostHandler) GetMyPosts(c *gin.Context) {
 	}
 
 	// Parse pagination parameters with defaults
-	params := pagination.ParseParams(c)
+	paginationParams, err := middlewares.ParsePagination(c)
+	if err != nil {
+		return // Response already sent
+	}
+
+	// Convert to service params format
+	params := &pagination.Params{
+		Page:  paginationParams.Page,
+		Limit: paginationParams.Limit,
+		Skip:  paginationParams.Offset,
+	}
 
 	// Parse filters
 	filters := parsePostFilters(c)
@@ -269,7 +289,17 @@ func (h *PostHandler) GetUserPosts(c *gin.Context) {
 	utils.Info("Getting posts for user with pagination", map[string]interface{}{"userId": userIDParam})
 
 	// Parse pagination parameters with defaults
-	params := pagination.ParseParams(c)
+	paginationParams, err := middlewares.ParsePagination(c)
+	if err != nil {
+		return // Response already sent
+	}
+
+	// Convert to service params format
+	params := &pagination.Params{
+		Page:  paginationParams.Page,
+		Limit: paginationParams.Limit,
+		Skip:  paginationParams.Offset,
+	}
 
 	// Parse filters
 	filters := parsePostFilters(c)

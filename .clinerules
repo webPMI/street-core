@@ -6,6 +6,104 @@
 - Respect the Monolith by Features structure
 - Use appropriate agents for complex tasks
 
+## 🔴 GOLDEN RULES - FUNDAMENTAL PRINCIPLES
+
+### 1. PAGINATION & LIMITS - ALWAYS REQUIRED
+
+**ALL backend list endpoints MUST implement pagination with limits:**
+
+```go
+// ✅ CORRECT - Every list endpoint
+func (h *Handler) List(c *gin.Context) {
+    // Parse pagination (MANDATORY)
+    pagination, err := middlewares.ParsePagination(c)
+    if err != nil {
+        return // Response already sent
+    }
+
+    // Use in query
+    results, total, err := h.service.List(ctx, pagination.Page, pagination.Limit, filters)
+
+    // Return with pagination info
+    c.JSON(http.StatusOK, gin.H{
+        "status": "success",
+        "data": gin.H{
+            "items": results,
+            "total": total,
+            "page":  pagination.Page,
+            "limit": pagination.Limit,
+        },
+    })
+}
+
+// ❌ INCORRECT - No pagination
+func (h *Handler) List(c *gin.Context) {
+    results, _ := h.service.GetAll(ctx) // NEVER DO THIS
+    c.JSON(http.StatusOK, results)
+}
+```
+
+**Why?**: Prevents performance issues, memory exhaustion, and database overload as data grows.
+
+**Default limits**:
+- Standard lists: 20 items per page, max 100
+- Heavy queries: 10 items per page, max 50
+- Admin lists: 50 items per page, max 200
+
+### 2. APPLICATION PHILOSOPHY - COMPETITION AGGREGATION
+
+**StreetCore is a COMPETITION AGGREGATOR platform.**
+
+**Core Concept**: Users can see ALL competitions (internal AND external), regardless of where they're managed.
+
+#### Competition Types
+
+**A) Internal Competitions** (Managed in StreetCore)
+```
+User creates competition → Registration handled in-app → Scores/results in-app
+```
+- Full lifecycle management in the platform
+- Registration form within the app
+- Scoring, leaderboard, results all in StreetCore
+
+**B) External Competitions** (Managed elsewhere)
+```
+User registers competition → Provides external registration link → Users redirected to official site
+```
+- Competition information displayed in StreetCore
+- Registration happens on external platform
+- StreetCore shows: date, location, discipline, how to register (external link)
+
+#### Implementation Pattern
+
+**Competition Model** must support:
+```go
+type Competition struct {
+    // ... other fields
+    RegistrationType string  // "internal" | "external"
+    ExternalURL      string  // If external, link to registration page
+    // ... other fields
+}
+```
+
+**Frontend Registration Flow**:
+```dart
+// User clicks "Register"
+if (competition.registrationType == 'internal') {
+    // Show in-app registration form
+    navigateTo(RegistrationFormPage(competition));
+} else {
+    // Open external URL in browser
+    launchURL(competition.externalURL);
+}
+```
+
+**Why?**:
+- Centralize discovery of ALL urban sports competitions
+- Users find everything in one place
+- Platform grows by aggregating existing events, not just hosting new ones
+- Network effect: more visibility = more participation
+
 ## Feature-Specific Rules
 
 ### Competitions Module

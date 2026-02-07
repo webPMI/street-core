@@ -60,7 +60,8 @@ post.IsSavedByCurrentUser = false
 
 ### Pagination
 - ALWAYS use pagination for list endpoints
-- Use `pagination.ParseParams(c)` for query params
+- Use `middlewares.ParsePagination(c)` for query params (standardized across all modules)
+- Convert to service params: `&pagination.Params{Page: p.Page, Limit: p.Limit, Skip: p.Offset}`
 - Return: `pagination.CreateResponse(page, limit, total, items)`
 - Structure: `{data: {data: [...], pagination: {...}}}`
 

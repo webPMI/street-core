@@ -7,11 +7,23 @@
 
 ## What This Project Does
 
-StreetCore is an urban sports platform with:
+StreetCore is an **urban sports competition aggregator** platform with:
+- **Competition Discovery**: See ALL competitions (internal + external)
 - User authentication & profiles
-- Competition management
+- Competition management (full lifecycle)
+- External competition registration (via links)
 - Multi-language support (ES primary)
 - 8 visual themes
+
+### 🎯 Core Mission
+
+**StreetCore aggregates ALL urban sports competitions**, whether managed in-app or externally.
+
+**Competition Types**:
+1. **Internal**: Full management in StreetCore (registration, scoring, results)
+2. **External**: Competition info displayed, registration via external link to official site
+
+**Why?** Centralize discovery → More visibility → More participation → Stronger community
 
 ## Current Priorities
 
@@ -49,6 +61,60 @@ Handler/Page → Service → Repository/API
 - Feature isolation (features don't import from each other unless necessary)
 - Shared code in core/pkg only
 - Elegir estructura según complejidad (ver criterios en ADR-005)
+
+## 🔴 GOLDEN RULES - NON-NEGOTIABLE
+
+### 1. ALL List Endpoints MUST Have Pagination
+
+**Backend**: Every endpoint that returns a list MUST implement pagination with limits.
+
+```go
+// ✅ REQUIRED pattern
+pagination, err := middlewares.ParsePagination(c)
+results, total, err := service.List(ctx, pagination.Page, pagination.Limit, filters)
+
+// ❌ FORBIDDEN
+allResults := service.GetAll(ctx) // NO LIMITS = FUTURE DISASTER
+```
+
+**Limits**:
+- Standard: 20/page, max 100
+- Heavy queries: 10/page, max 50
+- Admin: 50/page, max 200
+
+**Why?** Prevents performance collapse as data grows.
+
+### 2. Competition Aggregation Philosophy
+
+**StreetCore shows ALL competitions**, not just those managed in-app.
+
+**Implementation Requirements**:
+
+**Backend Model**:
+```go
+type Competition struct {
+    RegistrationType string // "internal" | "external"
+    ExternalURL      string // For external competitions
+    // ... other fields
+}
+```
+
+**Frontend Logic**:
+```dart
+if (competition.registrationType == 'internal') {
+    // In-app registration
+    showRegistrationForm();
+} else {
+    // Redirect to external site
+    launchURL(competition.externalURL);
+}
+```
+
+**Content Display**:
+- Internal: Full details, in-app registration, scoring, results
+- External: Info (date, location, discipline) + "Register Here" button → external link
+
+**Goal**: Be the go-to place to discover ALL urban sports competitions, building network effects.
 
 ### Backend Structure (Go)
 ```

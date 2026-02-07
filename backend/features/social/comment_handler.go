@@ -89,7 +89,17 @@ func (h *commentHandler) GetPostComments(c *gin.Context) {
 		"post_id": postID,
 	})
 
-	params := pagination.ParseParams(c)
+	paginationParams, err := middlewares.ParsePagination(c)
+	if err != nil {
+		return // Response already sent
+	}
+
+	// Convert to service params format
+	params := &pagination.Params{
+		Page:  paginationParams.Page,
+		Limit: paginationParams.Limit,
+		Skip:  paginationParams.Offset,
+	}
 
 	if c.Query("page") != "" || c.Query("limit") != "" {
 		comments, total, err := h.commentService.GetPostCommentsPaginated(postID, params)
